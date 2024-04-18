@@ -1,0 +1,45 @@
+.header__content__menu {
+	width: calc(100% - 60px);
+	height: 150vh;
+	position: fixed;
+	top: 0;
+	right: -100px;
+	background-color: #fff;
+	z-index: 9998;
+	transition: all 0.2s ease-in;
+	font-size: 24px;
+	color: #fff;
+	white-space: nowrap;
+
+	&__logo {
+		background-color: #490f56;
+		width: 100%;
+		position: relative;
+
+		img {
+			position: absolute;
+			left: 40px;
+			border-radius: 200px;
+			width: 6rem;
+			height: 6rem;
+			object-fit: cover;
+			margin: 0 auto; // Corrected for horizontal centering
+		}
+	}
+
+	&__icon {
+		i {
+			position: fixed;
+			right: 10px;
+			top: 30px;
+		}
+	}
+}
+
+.header__content__menu::after {
+	box-sizing: border-box;
+}
+
+.header__content__menu::before {
+	box-sizing: border-box;
+}
