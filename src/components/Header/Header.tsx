@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { Link } from 'react-router-dom'
-import './Header.scss'
-import HeaderMenu from './HeaderMenu/HeaderMenu'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { IState } from '../../Redux/Reducer'
 import { actionTypes } from '../../Redux/actionTypes/actionTypes'
+import './Header.scss'
+import HeaderMenu from './HeaderMenu/HeaderMenu'
 const Header: React.FC = () => {
 	const dispatch = useDispatch()
 	const toggleMenu = useSelector((state: IState) => state.toggleMenu)
@@ -39,9 +39,12 @@ const Header: React.FC = () => {
 							<div className={'header--auth'}>
 								<Link to={''}> Войти</Link>
 							</div>
-							<div className='header--burger--menu' onClick={()=>{
-								dispatch({ type: actionTypes.TOGGLE_MENU })
-							}}>
+							<div
+								className='header--burger--menu'
+								onClick={() => {
+									dispatch({ type: actionTypes.TOGGLE_MENU })
+								}}
+							>
 								<GiHamburgerMenu />
 							</div>
 							<div className={'header--cart'}>
