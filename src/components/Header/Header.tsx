@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 							<h1>Taco Hub</h1>
 						</div>
 						<div className={'header--title'}>
-							<div className='tel'>
+							<div className='header--title__tel'>
 								<h1>Доставка мексиканской еды</h1>
 								<p>Время работы: 10:00 - 03:00</p>
 							</div>
@@ -32,12 +32,16 @@ const Header: React.FC = () => {
 								</span>
 							</div>
 						</div>
-						<div className={'header--contact'}>
-							<h2>+7977323049</h2>
-						</div>
-						<div className='blog'>
+
+						<div className='header--blog'>
+							<div className={'header--contact'}>
+								<h2>+7977323049</h2>
+							</div>
 							<div className={'header--auth'}>
 								<Link to={''}> Войти</Link>
+								<div className={'header--cart'}>
+									<Link to={''}>товаров</Link>
+								</div>
 							</div>
 							<div
 								className='header--burger--menu'
@@ -46,9 +50,6 @@ const Header: React.FC = () => {
 								}}
 							>
 								<GiHamburgerMenu />
-							</div>
-							<div className={'header--cart'}>
-								<Link to={''}>товаров</Link>
 							</div>
 						</div>
 					</div>
