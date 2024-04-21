@@ -19,6 +19,12 @@ const Header: React.FC = () => {
 						</div>
 						<div className={'header--title'}>
 							<div className='header--title__tel'>
+								<p>
+									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+									Molestiae obcaecati corrupti vitae veniam consectetur totam
+									illum, recusandae doloremque eius beatae inventore deleniti
+									commodi eum, aut impedit porro aperiam rerum quia.
+								</p>
 								<h1>Доставка мексиканской еды</h1>
 								<p>Время работы: 10:00 - 03:00</p>
 							</div>
