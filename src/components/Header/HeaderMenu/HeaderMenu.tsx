@@ -1,54 +1,79 @@
-import { FaGift, FaMap } from 'react-icons/fa'
-import { FiLogIn } from 'react-icons/fi'
-import { IoClose, IoLocationSharp } from 'react-icons/io5'
-import Logo from '../../../assets/img/Logo.svg'
-import './HeaderMenu.scss'
-import { useDispatch } from 'react-redux'
-import { actionTypes } from '../../../Redux/actionTypes/actionTypes'
+/** @format */
+
+import { FaGift, FaMap } from "react-icons/fa"
+import { FiLogIn } from "react-icons/fi"
+import { IoLocationSharp } from "react-icons/io5"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import Logo from "../../../assets/img/Logo.svg"
+import { IState } from "../../../Redux/Reducer"
+import "./HeaderMenu.scss"
+
 function HeaderMenu() {
-	const dispatch = useDispatch()
+	const showModal = useSelector((state: IState) => state.toggleMenu)
 	return (
-		<div className='header__content__menu'>
-			<div className='header__content__menu__logo' style={{
-				display: 'flex',
-				alignItems: 'center',
-				justifyContent: "space-between",
-				height: "100px"
-			}} >
-				<img src={Logo} alt='' />
-			<i className="header__content__menu__close_icon" onClick={()=>{
-								dispatch({ type: actionTypes.TOGGLE_MENU })
-							}}>
-				<IoClose />
-			</i>
-				
-			</div>
+		<div
+			className={
+				showModal ? "header__content__menu active" : "header__content__menu"
+			}
+		>
+			<div className="row">
+				<div className="header__content__menu_gray"></div>
+				<div className="header__content__menu__logo">
+					<img src={Logo} alt="" />
+				</div>
 
-			<div className='header__content__menu__location'>
-				<IoLocationSharp />
-				<h5>Укажите ваш адрес</h5>
-				<p>Изменить</p>
-			</div>
+				<nav>
+					<div className="header__content__menu__nav">
+						<Link to="">
+							<i>
+								<IoLocationSharp />
+							</i>
+						</Link>
 
-			<div className='header__content__menu__login'>
-				<FiLogIn />
+						<div>
+							<Link to="">
+								<h2>Укажите ваш адрес</h2>
+							</Link>
+							<Link to="">Изменить</Link>
+						</div>
+					</div>
 
-				<p>Войти</p>
-			</div>
+					<div className="header__content__menu__nav">
+						<Link to="">
+							<i>
+								<FiLogIn />
+							</i>
+						</Link>
 
-			<div className='header__content__menu__map'>
-				<FaMap />
+						<Link to="">Войти</Link>
+					</div>
 
-				<p>Карта доставки</p>
-			</div>
+					<div className="header__content__menu__nav">
+						<Link to="">
+							<i>
+								<FaMap />
+							</i>
+						</Link>
 
-			<div className='header__content__menu__promo__code'>
-				<FaGift />
+						<Link to="">Карта доставки</Link>
+					</div>
 
-				<p>Использовать промокод</p>
+					<div className="header__content__menu__nav">
+						<Link to="">
+							<i>
+								<FaGift />
+							</i>
+						</Link>
+
+						<Link to="">Использовать промокод</Link>
+					</div>
+
+					<hr />
+				</nav>
 			</div>
 		</div>
-	)	
+	)
 }
 
 export default HeaderMenu

@@ -1,103 +1,138 @@
-.menu {
-	display: flex;
+/** @format */
 
-	.left__menu {
-		border: 10px solid black;
-		height: 100vh;
-		background-color: red;
-		position: relative;
-		width: 300px;
+@media screen and (min-width: 768px) {
+	.menu {
+		display: flex;
 
-		.categories__wrap {
-			position: absolute;
-			top: 170px;
-			left: 50px;
-			width: 200px;
-			transition: top 0.3s ease-in-out;
+		.left__menu {
+			border: 10px solid black;
+			height: 100vh;
+			background-color: red;
+			position: relative;
+			width: 300px;
+
+			.categories__wrap {
+				position: absolute;
+				top: 170px;
+				left: 50px;
+				width: 200px;
+				transition: top 0.3s ease-in-out;
+			}
+			.fixed-menu {
+				position: fixed;
+				top: 130px;
+				left: 50px;
+				transition: top 0.3s ease-in-out;
+			}
+
+			.menu__head {
+				padding: 15px 20px;
+				width: 178px;
+				height: 60px;
+			}
+
+			&__category {
+				border-top: 1px solid #eee;
+				padding: 6px 20px 5px 20px;
+				height: 35px;
+
+				.name {
+					// Add styling for category names
+				}
+			}
 		}
-		.fixed-menu {
-			position: fixed;
-			top: 130px;
-			left: 50px;
-			transition: top 0.3s ease-in-out;
-		}
 
-		.menu__head {
-			padding: 15px 20px;
-			width: 178px;
-			height: 60px;
-		}
+		.products__content {
+			.products__item {
+				.category__head {
+				}
 
-		&__category {
-			border-top: 1px solid #eee;
-			padding: 6px 20px 5px 20px;
-			height: 35px;
+				.products {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					gap: 10px;
 
-			.name {
+					.product__item__wrap {
+						border: 2px solid wheat;
+						border-radius: 7px;
+						width: 306px;
+						height: 436px;
+						padding: 25px 0;
+
+						.product__content {
+							.product__img__container {
+								img {
+									border-radius: 10px;
+								}
+							}
+							.product__name {
+								margin-top: 15px;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+
+								.name {
+									// Add styling for product names
+								}
+								.weight {
+									// Add styling for product weights
+								}
+							}
+							hr {
+								width: 260px;
+								margin-top: 20px;
+							}
+							.product__bottom {
+								display: flex;
+								justify-content: space-between;
+								gap: 0 90px;
+								margin: 20px 0;
+
+								.product__price {
+									// Add styling for product prices
+								}
+								.product_change {
+									.minus_hide {
+										// Add styling for minus button
+									}
+									.count {
+										// Add styling for product count
+									}
+									.plus {
+										// Add styling for plus button
+									}
+								}
+							}
+							.product__description {
+								width: 276px;
+								padding: 0 25px;
+
+								p {
+									text-align: left;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
+}
 
-	.products__content {
-		.products__item {
-			.category__head {
-			}
-
-			.products {
+@media screen and (min-width: 320px) {
+	.menu {
+		.left__menu {
+			.categories__wrap {
 				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 10px;
-				.product__item__wrap {
-					border: 2px solid wheat;
-					border-radius: 7px;
-					width: 306px;
-					height: 436px;
-					padding: 25px 0;
 
-					.product__content {
-						.product__img__container {
-							img {
-								border-radius: 10px;
-							}
-						}
-						.product__name {
-							margin-top: 15px;
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							.name {
-							}
-							.weight {
-							}
-						}
-						hr {
-							width: 260px;
-							margin-top: 20px;
-						}
-						.product__bottom {
-							display: flex;
-							justify-content: space-between;
-							gap: 0 90px;
-							margin: 20px 0;
-							.product__price {
-							}
-							.product_change {
-								.minus_hide {
-								}
-								.count {
-								}
-								.plus {
-								}
-							}
-						}
-						.product__description {
-							width: 276px;
-							padding: 0 25px;
-							p {
-								text-align: left;
-							}
-						}
+				.left__menu__category {
+					border-top: 1px solid #eee;
+					padding: 6px 20px 5px 20px;
+					height: 35px;
+
+					.name {
+						// Add styling for category names
 					}
 				}
 			}

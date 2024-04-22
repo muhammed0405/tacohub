@@ -1,104 +1,177 @@
-@media screen and (max-width: 768px) {
-	.header {
-		background: url('../../assets/img/div.header_wrap.png') no-repeat
-			center/cover;
+/** @format */
+
+@media screen and (max-width: 1000px) {
+	#header {
+		background: #490f56;
+
+		height: 80px;
+		position: relative;
 		.header {
 			display: flex;
+			align-items: center;
+		}
 
-			h1 {
-				font-size: clamp(18px, 8vw, 24px);
+		.header__div {
+			display: flex;
+			align-items: center;
+			gap: 0 40px;
+
+			.header__logo {
+				img {
+					width: 70px;
+					height: 70px;
+					border-radius: 100px;
+					object-fit: cover;
+					position: absolute;
+					left: 20px;
+					top: 0;
+				}
 			}
-
-			.header--title {
+			.header__title {
 				display: none;
-			}
-
-			&--contact {
-				display: none;
-			}
-
-			.blog {
-				.header--auth {
+				.header__title__tel {
 					display: none;
 				}
-
-				.header--burger--menu {
-					display: flex;
+				.header__nav {
+					a {
+						display: none;
+					}
 				}
 			}
-			&--cart {
+		}
+
+		.header__blog {
+			display: flex;
+			.header__contact {
 				display: none;
 			}
+
+			.header__auth {
+				.header__logIn {
+					padding-top: 20px;
+					button {
+						border-radius: 5px;
+						color: white;
+						font-weight: 600;
+						margin-right: 40px;
+						padding: 5px 20px;
+						background: none;
+						border: 2px solid aqua;
+						transition: 0.4s ease-in-out;
+						cursor: pointer;
+					}
+
+					button:hover {
+						color: black;
+						background-color: aqua;
+					}
+				}
+				.header__cart {
+					display: none;
+				}
+			}
+			.header__burger__menu {
+				position: absolute;
+				right: 10px;
+				z-index: 1000;
+				top: 30px;
+			}
 		}
 	}
 }
 
-.header--burger--menu {
-	display: none;
-}
-.header {
-	background: url('../../assets/img/div.header_wrap.png') no-repeat center/cover;
-	height: 100px;
-	.header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		&--div {
+@media screen and (min-width: 1000px) {
+	#header {
+		background-color: #490f56;
+
+		.header {
 			display: flex;
-			justify-content: center;
 			align-items: center;
-			margin-left: 0;
-			gap: 15px;
-		}
 
-		h1 {
-			font-size: 18px;
-		}
-
-		.header--title {
-			display: flex;
-			flex-direction: column;
-			align-items: start;
-			gap: 15px;
-			margin-left: 0;
-			&__tel {
-				margin-left: 0;
+			.header__div {
 				display: flex;
-				flex-direction: column;
-				align-items: start;
-				width: 300px;
-				p {
+				align-items: center;
+				width: 80%;
+				color: white;
+				.header__logo {
 					margin-left: 0;
+					img {
+						width: 100px;
+						height: 100px;
+						border-radius: 100px;
+						object-fit: cover;
+					}
 				}
-				h1 {
+
+				.header__title {
 					margin-left: 0;
+					display: flex;
+					flex-direction: column;
+					gap: 10px 0;
+
+					.header__title__tel {
+						margin-left: 0;
+						h1 {
+							font-size: clamp(12px, 2vw, 24px);
+						}
+					}
+
+					.header__nav {
+						display: flex;
+						justify-content: space-between;
+						gap: 0 20px;
+
+						a {
+							transition: 0.3s ease-in-out;
+							cursor: pointer;
+							font-size: clamp(12px, 1.5vw, 18px);
+						}
+						a:hover {
+							color: yellow;
+						}
+					}
+				}
+			}
+
+			.header__blog {
+				width: 30%;
+				.header__contact {
+					margin: 0 0 20px 30%;
+					color: white;
+				}
+
+				.header__auth {
+					display: flex;
+					padding-right: 30px;
+
+					button {
+						width: 100%;
+						padding: 5px 20px;
+						background: none;
+						display: flex;
+						font-size: 18px;
+						border: none;
+						transition: 0.3s ease-in-out;
+						cursor: pointer;
+						color: white;
+					}
+
+					button:hover {
+						background: #ffe271;
+					}
+					.header__logIn {
+						width: 50%;
+					}
+
+					.header__cart {
+						width: 50%;
+					}
+				}
+
+				.header__burger__menu {
+					display: none;
 				}
 			}
 		}
-		&--logo {
-			margin-left: 0;
-			background: gold;
-			width: 140px;
-			height: 100px;
-		}
-		&--nav {
-			display: flex;
-			align-items: center;
-			gap: 8px;
-		}
-		&--blog {
-			display: flex;
-			flex-direction: column;
-		}
-		&--auth {
-			gap: 5px;
-		}
 	}
-}
-
-.fixed-header {
-	position: fixed;
-	top: 0px;
-	width: 100%;
-	left: 0;
 }
