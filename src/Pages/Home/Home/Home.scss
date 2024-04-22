@@ -2,20 +2,26 @@
 	display: flex;
 
 	.left__menu {
-		padding: 20px 20px 0 0px;
-		width: 1100px;
+		border: 10px solid black;
 		height: 100vh;
-		z-index: 1000;
 		background-color: red;
+		position: relative;
+		width: 300px;
 
 		.categories__wrap {
-			border: 10px solid #eee;
-			padding: 1px;
-			width: 180px;
-			height: 342px;
+			position: absolute;
+			top: 170px;
+			left: 50px;
+			width: 200px;
+			transition: top 0.3s ease-in-out;
+		}
+		.fixed-menu {
 			position: fixed;
 			top: 130px;
+			left: 50px;
+			transition: top 0.3s ease-in-out;
 		}
+
 		.menu__head {
 			padding: 15px 20px;
 			width: 178px;
@@ -33,42 +39,63 @@
 	}
 
 	.products__content {
-		.product_item {
+		.products__item {
 			.category__head {
 			}
 
 			.products {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 10px;
 				.product__item__wrap {
-					.product__item {
-						.product__content {
-							width: 436px;
-							height: 636px;
-							.product__img__container {
-								width: 436px;
-								height: 436px;
-								img {
-								}
-							}
-							.product__name {
-								.name {
-								}
-								.weight {
-								}
-							}
+					border: 2px solid wheat;
+					border-radius: 7px;
+					width: 306px;
+					height: 436px;
+					padding: 25px 0;
 
-							.product__bottom {
-								.product__price {
+					.product__content {
+						.product__img__container {
+							img {
+								border-radius: 10px;
+							}
+						}
+						.product__name {
+							margin-top: 15px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							.name {
+							}
+							.weight {
+							}
+						}
+						hr {
+							width: 260px;
+							margin-top: 20px;
+						}
+						.product__bottom {
+							display: flex;
+							justify-content: space-between;
+							gap: 0 90px;
+							margin: 20px 0;
+							.product__price {
+							}
+							.product_change {
+								.minus_hide {
 								}
-								.product_change {
-									.minus_hide {
-									}
-									.count {
-									}
-									.plus {
-									}
+								.count {
+								}
+								.plus {
 								}
 							}
-							.product__description {
+						}
+						.product__description {
+							width: 276px;
+							padding: 0 25px;
+							p {
+								text-align: left;
 							}
 						}
 					}

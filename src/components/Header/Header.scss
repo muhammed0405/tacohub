@@ -1,5 +1,5 @@
 @media screen and (max-width: 768px) {
-	#header {
+	.header {
 		background: url('../../assets/img/div.header_wrap.png') no-repeat
 			center/cover;
 		.header {
@@ -36,18 +36,26 @@
 .header--burger--menu {
 	display: none;
 }
-#header {
+.header {
 	background: url('../../assets/img/div.header_wrap.png') no-repeat center/cover;
 	height: 100px;
 	.header {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		&--div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: 0;
+			gap: 15px;
+		}
+
 		h1 {
 			font-size: 18px;
 		}
 
 		.header--title {
-			padding: 0 10px;
 			display: flex;
 			flex-direction: column;
 			align-items: start;
@@ -81,14 +89,16 @@
 		&--blog {
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
-			gap: 5px;
 		}
 		&--auth {
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			gap: 5px;
 		}
 	}
+}
+
+.fixed-header {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	left: 0;
 }
