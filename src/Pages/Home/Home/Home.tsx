@@ -9,13 +9,21 @@ import "./Home.scss"
 
 const TacoGallery: React.FC = () => {
 	const tacos = useSelector((state: IState) => state.meals)
+	const cart = useSelector((state: IState) => state.cart)
+
+	const getQuantity = (id: string) => {
+		const item = cart.find(item => item.id === id)
+		return item ? item.quantity : 0
+	}
+
 	const dispatch = useDispatch()
 
-	const handleAddToCart = (image: IImage) => {
+	const handleAddToCart = (e: IImage) => {
 		dispatch({
 			type: actionTypes.ADD_TO_CART,
-			payload: image,
+			payload: e,
 		})
+		console.log(e, "is isis")
 	}
 
 	const [isSticky, setIsSticky] = useState(false)
@@ -28,9 +36,7 @@ const TacoGallery: React.FC = () => {
 				setIsSticky(window.pageYOffset > stickyTrigger)
 			}
 		}
-
 		window.addEventListener("scroll", handleScroll)
-
 		return () => {
 			window.removeEventListener("scroll", handleScroll)
 		}
@@ -40,46 +46,10 @@ const TacoGallery: React.FC = () => {
 		? "categories__wrap fixed-menu"
 		: "categories__wrap"
 
-	const renderImages = (images: IImage[]) => {
-		return images.map((image: IImage, index: number) => (
-			<div className="product__item__wrap" key={index}>
-				<div className="product__content">
-					<div className="product__img__container">
-						<img
-							style={{ width: "250px", height: "250px" }}
-							src={image.img}
-							alt={`Сүрөт ${index + 1}`}
-						/>
-					</div>
-					<div className="product__name">
-						<p className="name">{image.title}</p>
-						<h6 className="weight">{image.measure}</h6>
-					</div>
-					<hr />
-					<div className="product__bottom">
-						<div className="product__price">
-							{image.price ? image.price : "Price not available"}
-						</div>
-						<div className="product_change">
-							<div className="minus_hide"></div>
-							<span className="count">{image.quantity ?? ""}</span>
-							<div className="plus" onClick={() => handleAddToCart(image)}>
-								+
-							</div>
-						</div>
-					</div>
-					<div className="product__description">
-						<p>{image.description}</p>
-					</div>
-				</div>
-			</div>
-		))
-	}
-
 	return (
 		<div className="container">
 			<div className="menu">
-				<div className="left__menu" style={{ border: "2px solid" }}>
+				<div className="left__menu">
 					<div ref={menuRef} className={menuClass}>
 						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
@@ -97,11 +67,49 @@ const TacoGallery: React.FC = () => {
 							<div className="category__head">
 								<h1>{taco.title}</h1>
 							</div>
-							<div
-								className="products"
-								style={{ border: "1px solid white", display: "flex" }}
-							>
-								{renderImages(taco.images)}
+							<div className="products">
+								{taco.images.map((image: IImage, index: number) => (
+									<div className="product__item__wrap" key={index}>
+										<div className="product__content">
+											<div className="product__img__container">
+												<img src={image.img} alt={`Сүрөт ${index + 1}`} />
+											</div>
+
+											<div className="product__info">
+												<div className="product__name">
+													<h4 className="name">{image.title}</h4>
+													<h6 className="weight">{image.measure}</h6>
+
+													
+												</div>
+												<hr />
+												<div className="product__bottom">
+													<div className="product__price">
+														{image.price ? image.price : "Price not available"} руб.
+													</div>
+													< div className="product_change">
+														<button className={getQuantity(image.id) > 0 ? 
+															"minus_hide" : "minus"
+														}>-</button>
+														<span className="count">
+															{getQuantity(image.id)} 
+														</span>
+														<button
+															className="plus"
+															onClick={() => handleAddToCart(image)}
+														>
+															+
+														</button>
+													</div>
+												</div>
+											</div>
+
+											<div className="product__description">
+												<p>{image.description}</p>
+											</div>
+										</div>
+									</div>
+								))}
 							</div>
 						</div>
 					))}
