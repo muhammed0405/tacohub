@@ -1,40 +1,33 @@
 /** @format */
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { FaShoppingCart, FaUser } from "react-icons/fa"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import Logo from "../../assets/img/Logo.svg"
 import { actionTypes } from "../../Redux/actionTypes/actionTypes"
+import { IState, ITaco } from "../../Redux/Reducer"
 import "./Header.scss"
 import HeaderMenu from "./HeaderMenu/HeaderMenu"
 import MenuButton from "./MenuButton/MenuButton"
 const Header: React.FC = () => {
 	const dispatch = useDispatch()
 
-	// const [isSticky, setIsSticky] = useState(false)
-	// const menuRef = useRef<HTMLDivElement>(null)
+	const cart = useSelector((state: IState) => state.cart)
 
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		if (menuRef.current) {
-	// 			const stickyTrigger = menuRef.current.offsetTop
-	// 			setIsSticky(window.pageYOffset > stickyTrigger)
-	// 		}
-	// 	}
+	const [productsCount, setProductsCount] = useState<number>(0)
 
-	// 	window.addEventListener('scroll', handleScroll)
+	const getQuantity = cart.reduce((acc: number, el: ITaco) => {
+		return acc + (el.quantity! || 0)
+	}, 0)
 
-	// 	return () => {
-	// 		window.removeEventListener('scroll', handleScroll)
-	// 	}
-	// }, [])
-
-	// const headerId = isSticky ? 'header fixed-header' : 'header'
+	useEffect(() => {
+		setProductsCount(getQuantity)
+	}, [cart])
 
 	return (
-		<div className="container">
-			<div id="header">
+		<div id="header">
+			<div className="container">
 				<div className="header">
 					<div className="header__div">
 						<div className="header__logo">
@@ -65,14 +58,17 @@ const Header: React.FC = () => {
 								<button>
 									{" "}
 									<FaUser />
-									Войти
+									<p>Войти</p>
 								</button>
 							</div>
 							<div className="header__cart">
 								<button>
-									{" "}
 									<FaShoppingCart />
-									товаров
+
+									<div className="cart__info">
+										<p>{cart.length} товаров</p>
+										<p>{productsCount} цена </p>
+									</div>
 								</button>
 							</div>
 							<div

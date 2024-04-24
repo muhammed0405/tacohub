@@ -10,6 +10,7 @@ import './Home.scss'
 const TacoGallery: React.FC = () => {
 	const tacos = useSelector((state: IState) => state.meals)
 	const cart = useSelector((state: IState) => state.cart)
+	const [activeTaco, setActiveTaco] = useState<string | null>(null)
 
 	const getQuantity = (id: string) => {
 		const item = cart.find(item => item.id === id)
@@ -47,62 +48,71 @@ const TacoGallery: React.FC = () => {
 		: 'categories__wrap'
 
 	return (
-		<div className='container'>
-			<div className='menu'>
-				<div className='left__menu'>
+		<div className="container" style={{ border: "5px solid red" }}>
+			<div className="menu" style={{ border: "5px solid green" }}>
+				<div className="left__menu">
 					<div ref={menuRef} className={menuClass}>
-						<div className='menu__head'>Меню</div>
+						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
-							<div className='left__menu__category' key={taco.id}>
+							<div className="left__menu__category" key={taco.id}>
 								<Link to={taco.id} smooth={true} duration={500}>
-									<button className='name'>{taco.title}</button>
+									<button
+										className={`name ${
+											activeTaco === taco.id ? "active-button" : ""
+										}`}
+										onClick={() => setActiveTaco(taco.id)}
+									>
+										{taco.title}
+									</button>
 								</Link>
 							</div>
 						))}
 					</div>
 				</div>
-				<div className='products__content'>
+				<div className="products__content">
 					{tacos.map((taco: ITaco) => (
-						<div key={taco.id} id={taco.id} className='products__item'>
-							<div className='category__head'>
+						<div key={taco.id} id={taco.id} className="products__item">
+							<div className="category__head">
 								<h1>{taco.title}</h1>
 							</div>
-							<div className='products'>
+							<div className="products">
 								{taco.images.map((image: IImage, index: number) => (
-									<div className='product__item__wrap' key={index}>
-										<div className='product__content'>
-											<div className='product__img__container'>
+									<div
+										className="product__item__wrap"
+										style={{ border: "5px solid green" }}
+										key={index}
+									>
+										<div className="product__content">
+											<div className="product__img__container">
 												<img src={image.img} alt={`Сүрөт ${index + 1}`} />
 											</div>
 
-											<div className='product__info'>
-												<div className='product__name'>
-													<h4 className='name'>{image.title}</h4>
-													<h6 className='weight'>{image.measure}</h6>
+											<div className="product__info">
+												<div className="product__name">
+													<h4 className="name">{image.title}</h4>
+													<h6 className="weight">{image.measure}</h6>
 												</div>
 												<hr />
-												<p>{image.description}</p>
 
-												<div className='product__bottom'>
-													<div className='product__price'>
-														{image.price ? image.price : 'Price not available'}{' '}
-														руб.
+												<div className="product__bottom">
+													<div className="product__price">
+														<p>{image.price} руб.</p>
 													</div>
-													<div className='product_change'>
+													<div className="product_change">
 														<button
 															className={
 																getQuantity(image.id) > 0
-																	? 'minus_hide'
-																	: 'minus'
+																	? "minus_hide"
+																	: "minus"
 															}
 														>
 															-
 														</button>
-														<span className='count'>
+														<span className="count">
 															{getQuantity(image.id)}
 														</span>
 														<button
-															className='plus'
+															className="plus"
 															onClick={() => handleAddToCart(image)}
 														>
 															+
@@ -111,7 +121,7 @@ const TacoGallery: React.FC = () => {
 												</div>
 											</div>
 
-											<div className='product__description'>
+											<div className="product__description">
 												<p>{image.description}</p>
 											</div>
 										</div>
