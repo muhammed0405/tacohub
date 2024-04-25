@@ -9,26 +9,25 @@
 		position: relative;
 	}
 
-	.left__menu {
-		height: 100vh;
-		position: relative;
+	.categories__wrap {
+		height: 100%;
+		padding-top: 100px;
 	}
 
-	.categories__wrap,
-	.left-menu {
-		position: absolute;
-		top: 170px;
-		left: 10px;
-		width: 150px;
+	.left__menu {
+		position: sticky;
+		top: 0;
+		left: 10%;
 		border: 3px solid red;
+		height: 270px;
 		transition: top 0.3s ease-in-out;
 	}
 
-	.fixed-menu {
-		position: fixed;
-		top: 130px;
-		left: 100px;
-	}
+	// .fixed-menu {
+	// 	position: fixed;
+	// 	top: 130px;
+	// 	left: 100px;
+	// }
 
 	.menu__head {
 		padding: 15px 20px;
@@ -61,18 +60,9 @@
 	}
 
 	.products__content {
-		margin-left: 10%;
-
 		.products__item {
 			.category__head {
 				margin: 40px 0 10px 100px;
-			}
-
-			.products {
-				display: flex;
-				gap: 20px;
-				width: 80%;
-				margin: 0 auto;
 			}
 
 			.product__item__wrap {
@@ -139,8 +129,31 @@
 	}
 }
 
+@media screen and (min-width: 1300px ) {
+	.products {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		width: 80%;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1000px) {
+	.products {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+		width: 80%;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+}
+
 @media screen and (max-width: 1000px) {
 	.menu {
+
 		.left__menu {
 			border: 3px solid red;
 			display: flex;
@@ -174,6 +187,7 @@
 			}
 		}
 		.products__content {
+			width: 100%;
 			.products__item {
 				.category__head {
 					margin: 20px 0;
@@ -271,7 +285,7 @@ button {
 .plus {
 	display: block;
 	border-radius: 5px;
-	background-color: #one;
+	background-color: none;
 	color: #000;
 	height: 35px;
 	width: 35px;

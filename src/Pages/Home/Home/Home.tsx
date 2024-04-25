@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-scroll'
 import { IImage, IState, ITaco } from '../../../Redux/Reducer'
@@ -27,32 +27,32 @@ const TacoGallery: React.FC = () => {
 		console.log(e, 'is isis')
 	}
 
-	const [isSticky, setIsSticky] = useState(false)
-	const menuRef = useRef<HTMLDivElement>(null)
+	// const [isSticky, setIsSticky] = useState(false)
+	// const menuRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (menuRef.current) {
-				const stickyTrigger = menuRef.current.offsetTop
-				setIsSticky(window.pageYOffset > stickyTrigger)
-			}
-		}
-		window.addEventListener('scroll', handleScroll)
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [])
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		if (menuRef.current) {
+	// 			const stickyTrigger = menuRef.current.offsetTop
+	// 			setIsSticky(window.pageYOffset > stickyTrigger)
+	// 		}
+	// 	}
+	// 	window.addEventListener('scroll', handleScroll)
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll)
+	// 	}
+	// }, [])
 
-	const menuClass = isSticky
-		? 'categories__wrap fixed-menu'
-		: 'categories__wrap'
+	// const menuClass = isSticky
+	// 	? 'categories__wrap fixed-menu'
+	// 	: 'categories__wrap'
 
 	return (
-		<div className='container' style={{ border: '5px solid red' }}>
-			<div className='menu' style={{ border: '5px solid green' }}>
-				<div className='left__menu'>
+		<div className="container" style={{ border: "5px solid red" }}>
+			<div className="menu" style={{ border: "5px solid green" }}>
+				<div className="left__menu">
 					<div ref={menuRef} className={menuClass}>
-						<div className='menu__head'>Меню</div>
+						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
 							<div className='left__menu__category' key={taco.id}>
 								<Link to={taco.id} smooth={true} duration={500}>
@@ -78,8 +78,8 @@ const TacoGallery: React.FC = () => {
 							<div className='products'>
 								{taco.images.map((image: IImage, index: number) => (
 									<div
-										className='product__item__wrap'
-										style={{ border: '5px solid green' }}
+										className="product__item__wrap"
+										style={{ border: "5px solid green" }}
 										key={index}
 									>
 										<div className='product__content'>
