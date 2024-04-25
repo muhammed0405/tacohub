@@ -4,6 +4,7 @@
 	.menu {
 		display: flex;
 		background-color: white;
+		padding-bottom: 160px;
 		width: 90%;
 		margin: 0 auto;
 		position: relative;
@@ -11,24 +12,16 @@
 
 	.categories__wrap {
 		height: 100%;
-		padding-top: 100px;
+		padding-top: 30px;
 	}
 
 	.left__menu {
 		position: sticky;
-		top: 0;
+		top: 70px;
 		left: 10%;
-		border: 3px solid red;
 		height: 270px;
 		transition: top 0.3s ease-in-out;
 	}
-
-	// .fixed-menu {
-	// 	position: fixed;
-	// 	top: 130px;
-	// 	left: 100px;
-	// }
-
 	.menu__head {
 		padding: 15px 20px;
 		width: 178px;
@@ -129,7 +122,7 @@
 	}
 }
 
-@media screen and (min-width: 1300px ) {
+@media screen and (min-width: 1300px) {
 	.products {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -153,7 +146,6 @@
 
 @media screen and (max-width: 1000px) {
 	.menu {
-
 		.left__menu {
 			border: 3px solid red;
 			display: flex;
@@ -223,7 +215,7 @@
 								padding-right: 20px;
 
 								.name {
-									font-size: 18px;
+									font-size: clamp(14px , 2vw, 24px);
 								}
 								.weight {
 									font-size: 14px;

@@ -1,11 +1,10 @@
 /** @format */
 
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-scroll'
-import { IImage, IState, ITaco } from '../../../Redux/Reducer'
-import { actionTypeKeys } from '../../../Redux/actionTypes/actionTypes'
-import './Home.scss'
+import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { IImage, IState, ITaco } from "../../../Redux/actionTypes/types"
+import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
+import "./Home.scss"
 
 const TacoGallery: React.FC = () => {
 	const tacos = useSelector((state: IState) => state.meals)
@@ -24,7 +23,7 @@ const TacoGallery: React.FC = () => {
 			type: actionTypeKeys.ADD_TO_CART,
 			payload: e,
 		})
-		console.log(e, 'is isis')
+		console.log(e, "is isis")
 	}
 
 	// const [isSticky, setIsSticky] = useState(false)
@@ -48,71 +47,67 @@ const TacoGallery: React.FC = () => {
 	// 	: 'categories__wrap'
 
 	return (
-		<div className="container" style={{ border: "5px solid red" }}>
-			<div className="menu" style={{ border: "5px solid green" }}>
+		<div className="container">
+			<div className="menu">
 				<div className="left__menu">
-					<div ref={menuRef} className={menuClass}>
+					<div className={"categories__wrap"}>
 						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
-							<div className='left__menu__category' key={taco.id}>
-								<Link to={taco.id} smooth={true} duration={500}>
+							<div className="left__menu__category" key={taco.id}>
+								<a href={`#${taco.id}`} >
 									<button
 										className={`name ${
-											activeTaco === taco.id ? 'active-button' : ''
+											activeTaco === taco.id ? "active-button" : ""
 										}`}
 										onClick={() => setActiveTaco(taco.id)}
 									>
 										{taco.title}
 									</button>
-								</Link>
+								</a>
 							</div>
 						))}
 					</div>
 				</div>
-				<div className='products__content'>
+				<div className="products__content">
 					{tacos.map((taco: ITaco) => (
-						<div key={taco.id} id={taco.id} className='products__item'>
-							<div className='category__head'>
+						<div key={taco.id} id={taco.id} className="products__item">
+							<div className="category__head">
 								<h1>{taco.title}</h1>
 							</div>
-							<div className='products'>
+							<div className="products">
 								{taco.images.map((image: IImage, index: number) => (
-									<div
-										className="product__item__wrap"
-										style={{ border: "5px solid green" }}
-										key={index}
-									>
-										<div className='product__content'>
-											<div className='product__img__container'>
+									<div className="product__item__wrap" key={index}>
+										<div className="product__content">
+											<div className="product__img__container">
 												<img src={image.img} alt={`Сүрөт ${index + 1}`} />
 											</div>
 
-											<div className='product__info'>
-												<div className='product__name'>
-													<h4 className='name'>{image.title}</h4>
-													<h6 className='weight'>{image.measure}</h6>
+											<div className="product__info">
+												<div className="product__name">
+													<h4 className="name">{image.title}</h4>
+													<h6 className="weight">{image.measure}</h6>
 												</div>
 												<hr />
 
-												<div className='product__bottom'>
-													<div className='product__price'>
+												<div className="product__bottom">
+													<div className="product__price">
 														<p>{image.price} руб.</p>
 													</div>
-													<div className='product_change'>
+													<div className="product_change">
 														<button
 															className={
 																getQuantity(image.id) > 0
-																	? 'minus_hide'
-																	: 'minus'
+																	? "minus_hide"
+																	: "minus"
 															}
 														>
 															-
 														</button>
-														<span className='count'>
+														<span className="count">
 															{getQuantity(image.id)}
 														</span>
 														<button
-															className='plus'
+															className="plus"
 															onClick={() => handleAddToCart(image)}
 														>
 															+
@@ -121,7 +116,7 @@ const TacoGallery: React.FC = () => {
 												</div>
 											</div>
 
-											<div className='product__description'>
+											<div className="product__description">
 												<p>{image.description}</p>
 											</div>
 										</div>

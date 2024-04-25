@@ -1,23 +1,37 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react'
-import { FaShoppingCart, FaUser } from 'react-icons/fa'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { IState, ITaco } from '../../Redux/Reducer'
-import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
-import Logo from '../../assets/img/Logo.svg'
-import './Header.scss'
-import HeaderMenu from './HeaderMenu/HeaderMenu'
-import MenuButton from './MenuButton/MenuButton'
+import React, { useEffect, useState } from "react"
+import { FaShoppingCart, FaUser } from "react-icons/fa"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink } from "react-router-dom"
+import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
+import { IImage, IState } from "../../Redux/actionTypes/types"
+import Logo from "../../assets/img/Logo.svg"
+import "./Header.scss"
+import HeaderMenu from "./HeaderMenu/HeaderMenu"
+import MenuButton from "./MenuButton/MenuButton"
 const Header: React.FC = () => {
+
+	const [isShrunk, setIsShrunk] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsShrunk(window.scrollY > 50)
+		}
+
+		window.addEventListener("scroll", handleScroll)
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll)
+		}
+	}, [])
 	const dispatch = useDispatch()
 
 	const cart = useSelector((state: IState) => state.cart)
 
 	const [productsCount, setProductsCount] = useState<number>(0)
 
-	const getQuantity = cart.reduce((acc: number, el: ITaco) => {
+	const getQuantity = cart.reduce((acc: number, el: IImage) => {
 		return acc + (el.quantity! || 0)
 	}, 0)
 
@@ -26,51 +40,68 @@ const Header: React.FC = () => {
 	}, [cart])
 
 	return (
-		<div id='header'>
-			<div className='container'>
-				<div className='header'>
-					<div className='header__div'>
-						<div className='header__logo'>
-							<img src={Logo} alt='' />
+		<div
+			id="header" style={{
+				height: isShrunk ? "50px" : "100px",
+			}}
+		>
+			<div className="container">
+				<div className="header" style={{
+					
+				}}>
+					<div className="header__div">
+						<div className="header__logo">
+							<img src={Logo} alt="" style={{
+								height: isShrunk ? "50px" : "100px",
+								width: isShrunk ? "50px" : "100px",
+							}}/>
 						</div>
-						<div className='header__title'>
-							<div className='header__title__tel'>
+						<div className="header__title">
+							<div
+								className={
+									isShrunk ? "header__title__tel--shrunk" : "header__title__tel"
+								}
+							>
 								<h1>Доставка мексиканской еды</h1>
 								<p>Время работы: 10:00 - 03:00</p>
 							</div>
-							<div className='header__nav'>
-								<NavLink to={'home/'}>Меню</NavLink>
-								<NavLink to={'/'}>Акции</NavLink>
-								<NavLink to={'/'}>О доставке</NavLink>
-								<NavLink to={'/'}>Отзывы</NavLink>
+							<div className="header__nav">
+								<NavLink to={"home/"}>Меню</NavLink>
+								<NavLink to={"/"}>Акции</NavLink>
+								<NavLink to={"/"}>О доставке</NavLink>
+								<NavLink to={"/"}>Отзывы</NavLink>
 								<span>
-									<NavLink to={'/'}>г Москва, ул Авангардная</NavLink>
+									<NavLink to={"/"}>г Москва, ул Авангардная</NavLink>
 								</span>
 							</div>
 						</div>
 					</div>
-					<div className='header__blog'>
-						<div className='header__contact'>
+					<div className="header__blog">
+						<div
+							className={
+								isShrunk ? "header__contact--shrunk" : "header__contact"
+							}
+						>
 							<h2>+7977323049</h2>
 						</div>
-						<div className='header__auth'>
-							<div className='header__logIn'>
+						<div className="header__auth">
+							<div className="header__logIn">
 								<button>
-									{' '}
+									{" "}
 									<FaUser />
 									<p>Войти</p>
 								</button>
 							</div>
 							<div
-								className='header__cart'
+								className="header__cart"
 								style={{
-									background: cart.length > 0 ? '#ffe271' : 'none',
+									background: cart.length > 0 ? "#ffe271" : "none",
 								}}
 							>
-								<NavLink to={'/cart'}>
+								<NavLink to={"/cart"}>
 									<button>
 										<FaShoppingCart />
-										<div className='cart__info'>
+										<div className="cart__info">
 											<p>{cart.length} товаров</p>
 											<p>{productsCount} цена </p>
 										</div>
@@ -78,7 +109,7 @@ const Header: React.FC = () => {
 								</NavLink>
 							</div>
 							<div
-								className='header__burger__menu'
+								className="header__burger__menu"
 								onClick={() => {
 									dispatch({ type: actionTypeKeys.TOGGLE_MENU })
 								}}
