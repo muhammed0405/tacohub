@@ -2,18 +2,17 @@ import { actionTypeKeys } from './actionTypes'
 export interface IImage {
 	id: string
 	img: string
-	title?: string
-	measure?: string
-	price?: number
-	description?: string
+	title: string
+	measure: string
+	price: number
+	description: string
 	quantity: number
 }
 
 export interface ITaco {
 	id: string
 	images: IImage[]
-	title?: string
-	quantity?: number
+	title: string
 }
 
 export interface IState {
