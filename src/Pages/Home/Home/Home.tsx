@@ -2,18 +2,29 @@
 
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { IImage, IState, ITaco } from "../../../Redux/actionTypes/types"
+import CardModal from "../../../components/CardModal/CardModal"
 import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
+import { IImage, IState, ITaco } from "../../../Redux/actionTypes/types"
 import "./Home.scss"
 
 const TacoGallery: React.FC = () => {
 	const tacos = useSelector((state: IState) => state.meals)
 	const cart = useSelector((state: IState) => state.cart)
+	const showCard = useSelector((state: IState) => state.showModal)
 	const [activeTaco, setActiveTaco] = useState<string | null>(null)
 
+	const [itemIdToModal, setItemIdToModal] = useState<IImage>()
 	const getQuantity = (id: string) => {
-		const item = cart.find(item => item.id === id)
+		const item = cart.find(el => el.id === id)
 		return item ? item.quantity : 0
+	}
+
+	const handleShowCard = (e: IImage) => {
+		setItemIdToModal(e)
+
+		dispatch({
+			type: actionTypeKeys.TOGGLE_MODAL,
+		})
 	}
 
 	const dispatch = useDispatch()
@@ -26,25 +37,12 @@ const TacoGallery: React.FC = () => {
 		console.log(e, "is isis")
 	}
 
-	// const [isSticky, setIsSticky] = useState(false)
-	// const menuRef = useRef<HTMLDivElement>(null)
-
-	// useEffect(() => {
-	// 	const handleScroll = () => {
-	// 		if (menuRef.current) {
-	// 			const stickyTrigger = menuRef.current.offsetTop
-	// 			setIsSticky(window.pageYOffset > stickyTrigger)
-	// 		}
-	// 	}
-	// 	window.addEventListener('scroll', handleScroll)
-	// 	return () => {
-	// 		window.removeEventListener('scroll', handleScroll)
-	// 	}
-	// }, [])
-
-	// const menuClass = isSticky
-	// 	? 'categories__wrap fixed-menu'
-	// 	: 'categories__wrap'
+	const handleRemoveFromCart = (e: IImage) => {
+		dispatch({
+			type: actionTypeKeys.REMOVE_FROM_CART,
+			payload: e,
+		})
+	}
 
 	return (
 		<div className="container">
@@ -54,7 +52,7 @@ const TacoGallery: React.FC = () => {
 						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
 							<div className="left__menu__category" key={taco.id}>
-								<a href={`#${taco.id}`} >
+								<a href={`#${taco.id}`}>
 									<button
 										className={`name ${
 											activeTaco === taco.id ? "active-button" : ""
@@ -75,28 +73,33 @@ const TacoGallery: React.FC = () => {
 								<h1>{taco.title}</h1>
 							</div>
 							<div className="products">
-								{taco.images.map((image: IImage, index: number) => (
+								{taco.tacoCategory.map((item: IImage, index: number) => (
 									<div className="product__item__wrap" key={index}>
 										<div className="product__content">
 											<div className="product__img__container">
-												<img src={image.img} alt={`Сүрөт ${index + 1}`} />
+												<img
+													src={item.img}
+													alt={`Сүрөт ${index + 1}`}
+													onClick={() => handleShowCard(item)}
+												/>
 											</div>
 
 											<div className="product__info">
 												<div className="product__name">
-													<h4 className="name">{image.title}</h4>
-													<h6 className="weight">{image.measure}</h6>
+													<h4 className="name">{item.title}</h4>
+													<h6 className="weight">{item.measure}</h6>
 												</div>
 												<hr />
 
 												<div className="product__bottom">
 													<div className="product__price">
-														<p>{image.price} руб.</p>
+														<p>{item.price} руб.</p>
 													</div>
 													<div className="product_change">
 														<button
+															onClick={() => handleRemoveFromCart(item)}
 															className={
-																getQuantity(image.id) > 0
+																getQuantity(item.id) > 0
 																	? "minus_hide"
 																	: "minus"
 															}
@@ -104,11 +107,11 @@ const TacoGallery: React.FC = () => {
 															-
 														</button>
 														<span className="count">
-															{getQuantity(image.id)}
+															{getQuantity(item.id)}
 														</span>
 														<button
 															className="plus"
-															onClick={() => handleAddToCart(image)}
+															onClick={() => handleAddToCart(item)}
 														>
 															+
 														</button>
@@ -117,7 +120,7 @@ const TacoGallery: React.FC = () => {
 											</div>
 
 											<div className="product__description">
-												<p>{image.description}</p>
+												<p>{item.description}</p>
 											</div>
 										</div>
 									</div>
@@ -127,6 +130,7 @@ const TacoGallery: React.FC = () => {
 					))}
 				</div>
 			</div>
+			{showCard && <CardModal taco={itemIdToModal} />}
 		</div>
 	)
 }

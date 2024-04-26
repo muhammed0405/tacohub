@@ -29,15 +29,18 @@ const Header: React.FC = () => {
 	const cart = useSelector((state: IState) => state.cart)
 
 	const [productsCount, setProductsCount] = useState<number>(0)
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+	
 	const [toggleMenu, setToggleMenu] = useState<boolean>(false)
 
 	const getQuantity = cart.reduce((acc: number, el: IImage) => {
-		return acc + (el.quantity! || 0)
+		return acc + (el.quantity! * el.price!)
 	}, 0)
 	const totalSumm = cart.reduce((acc, el) => {
 		return acc + el.price * el.quantity
 	}, 0)
+
+
 
 	useEffect(() => {
 		setProductsCount(getQuantity)
@@ -72,13 +75,14 @@ const Header: React.FC = () => {
 								<h1>Доставка мексиканской еды</h1>
 								<p>Время работы: 10:00 - 03:00</p>
 							</div>
-							<div className='header__nav'>
-								<NavLink to={'home/'}>Меню</NavLink>
-								<NavLink to={'/'}>Акции</NavLink>
-								<NavLink to={'/'}>О доставке</NavLink>
-								<NavLink to={'/'}>Отзывы</NavLink>
+
+							<div className="header__nav">
+								<NavLink to={"/"}>Меню</NavLink>
+								<NavLink to={"/sales"}>Акции</NavLink>
+								<NavLink to={"/delivery"}>О доставке</NavLink>
+								<NavLink to={"/reviews"}>Отзывы</NavLink>
 								<span>
-									<NavLink to={'/'}>г Москва, ул Авангардная</NavLink>
+									<NavLink to={"/address"}>г Москва, ул Авангардная</NavLink>
 								</span>
 							</div>
 						</div>

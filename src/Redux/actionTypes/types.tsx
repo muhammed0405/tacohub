@@ -1,4 +1,6 @@
-import { actionTypeKeys } from './actionTypes'
+/** @format */
+
+import { actionTypeKeys } from "./actionTypes"
 export interface IImage {
 	id: string
 	img: string
@@ -16,20 +18,40 @@ export interface ITaco {
 }
 
 export interface IState {
+	showModal: boolean
 	meals: ITaco[]
 	toggleMenu: boolean
 	showCart: boolean
 	cart: IImage[]
 }
-type IToggleMenu = {
+interface IToggleMenu {
 	type: typeof actionTypeKeys.TOGGLE_MENU
 }
-type IToggleCart = {
+
+interface IToggleCart {
 	type: typeof actionTypeKeys.TOGGLE_CART
 }
-type IAddToCart = {
+
+interface IAddToCart {
 	type: typeof actionTypeKeys.ADD_TO_CART
 	payload: IImage
 }
+interface IRemoveFromCart {
+	type: typeof actionTypeKeys.REMOVE_FROM_CART
+	payload: IImage
+}
+interface IUpdateCartItemPrice {
+	type: typeof actionTypeKeys.UPDATE_CART_ITEM_PRICE
+	payload: IImage
+}
 
-export type IAction = IToggleMenu | IToggleCart | IAddToCart
+interface IUpdateMealQuantity {
+	type: typeof actionTypeKeys.UPDATE_MEAL_QUANTITY
+	payload: string
+}
+
+interface IToggleModal {
+	type: typeof actionTypeKeys.TOGGLE_MODAL
+}
+
+export type IAction = IToggleMenu | IToggleCart | IAddToCart | IRemoveFromCart | IUpdateCartItemPrice | IUpdateMealQuantity | IToggleModal

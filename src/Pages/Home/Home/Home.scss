@@ -258,7 +258,6 @@
 .minus_hide {
 	display: block;
 	border-radius: 5px;
-	background-color: #dcdcdc;
 	color: #000;
 	height: 35px;
 	width: 35px;
@@ -266,8 +265,13 @@
 	line-height: 35px;
 }
 
-button {
+button{
 	border: none;
+	background: none;
+	font-size: 24px;
+}
+button:active {
+	background-color: purple ;
 }
 
 .minus {
@@ -277,7 +281,6 @@ button {
 .plus {
 	display: block;
 	border-radius: 5px;
-	background-color: none;
 	color: #000;
 	height: 35px;
 	width: 35px;
