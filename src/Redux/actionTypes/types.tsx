@@ -1,6 +1,6 @@
 /** @format */
 
-import { actionTypeKeys } from "./actionTypes"
+import { actionTypeKeys } from './actionTypes'
 export interface IImage {
 	id: string
 	img: string
@@ -13,8 +13,8 @@ export interface IImage {
 
 export interface ITaco {
 	id: string
-	images: IImage[]
 	title: string
+	tacoCategory: IImage[]
 }
 
 export interface IState {
@@ -54,4 +54,11 @@ interface IToggleModal {
 	type: typeof actionTypeKeys.TOGGLE_MODAL
 }
 
-export type IAction = IToggleMenu | IToggleCart | IAddToCart | IRemoveFromCart | IUpdateCartItemPrice | IUpdateMealQuantity | IToggleModal
+export type IAction =
+	| IToggleMenu
+	| IToggleCart
+	| IAddToCart
+	| IRemoveFromCart
+	| IUpdateCartItemPrice
+	| IUpdateMealQuantity
+	| IToggleModal

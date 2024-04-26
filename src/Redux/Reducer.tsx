@@ -2,63 +2,65 @@
 
 //taco
 
-import ChickenTaco from "../assets/img/chicken.jpg"
-import DoubleYard from "../assets/img/doubleYard.jpg"
-import Taco from "../assets/img/taco1.jpg"
+import ChickenTaco from '../assets/img/chicken.jpg'
+import DoubleYard from '../assets/img/doubleYard.jpg'
+import Taco from '../assets/img/taco1.jpg'
 
 //burito
 
-import BeefRollUp from "../assets/img/BeefRollUp.jpg"
-import BurritoVega from "../assets/img/BurritoVega.jpg"
-import rollUpDoubleChease from "../assets/img/rollUpDubleChese.jpg"
+import BeefRollUp from '../assets/img/BeefRollUp.jpg'
+import BurritoVega from '../assets/img/BurritoVega.jpg'
+import rollUpDoubleChease from '../assets/img/rollUpDubleChese.jpg'
 
 //kesal
-import BeefKesal from "../assets/img/beefKesal.png"
-import ChickenKesal from "../assets/img/chickeKesal.png"
-import ChickenKesalBBQ from "../assets/img/chikenKesalBBQ.png"
+import BeefKesal from '../assets/img/beefKesal.png'
+import ChickenKesal from '../assets/img/chickeKesal.png'
+import ChickenKesalBBQ from '../assets/img/chikenKesalBBQ.png'
 
 // nachos
 
-import nachos from "../assets/img/nachos.png"
-import nachosChili from "../assets/img/nachosChili.png"
+import nachos from '../assets/img/nachos.png'
+import nachosChili from '../assets/img/nachosChili.png'
 
-import { actionTypeKeys } from "./actionTypes/actionTypes"
-import { IAction, IState } from "./actionTypes/types"
-
+import { actionTypeKeys } from './actionTypes/actionTypes'
+import { IAction, IState } from './actionTypes/types'
+// soysauce
+import halopeno from '../assets/img/halopeno.png'
+import pico from '../assets/img/pico.png'
 const initialState: IState = {
 	showCart: false,
 	showModal: false,
 
 	meals: [
 		{
-			id: "100",
-			title: "Тако",
+			id: '100',
+			title: 'Тако',
 			tacoCategory: [
 				{
-					id: "1",
+					id: '1',
 					img: Taco,
-					title: "Хрустящее тако",
-					measure: "250г",
+					title: 'Хрустящее тако',
+					measure: '250г',
 					quantity: 0,
 					price: 350,
 					description:
 						' Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "2",
+					id: '2',
 					img: ChickenTaco,
-					title: "Чикен тако",
-					measure: "250г",
+					title: 'Чикен тако',
+					measure: '250г',
 					quantity: 0,
 					price: 522,
 					description:
 						' Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "3",
+					id: '3',
 					img: DoubleYard,
-					title: "Грик тако",
-					measure: "250г",
+					title: 'Грик тако',
+					measure: '250г',
 					quantity: 0,
 					price: 200,
 					description:
@@ -67,34 +69,34 @@ const initialState: IState = {
 			],
 		},
 		{
-			id: "200",
-			title: "Буррито",
+			id: '200',
+			title: 'Буррито',
 			tacoCategory: [
 				{
-					id: "4",
+					id: '4',
 					img: rollUpDoubleChease,
-					title: "Ролл-ап Дабл-чиз (веге)",
-					measure: "250г",
+					title: 'Ролл-ап Дабл-чиз (веге)',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "4",
+					id: '5',
 					img: BurritoVega,
-					title: "Буррито Вега с гуакамоле (веге)",
-					measure: "250г",
+					title: 'Буррито Вега с гуакамоле (веге)',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "5",
+					id: '6',
 					img: BeefRollUp,
-					title: "Биф ролл-ап",
-					measure: "250г",
+					title: 'Биф ролл-ап',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
@@ -103,34 +105,34 @@ const initialState: IState = {
 			],
 		},
 		{
-			id: "300",
-			title: "Кесадильи",
+			id: '300',
+			title: 'Кесадильи',
 			tacoCategory: [
 				{
-					id: "6",
+					id: '7',
 					img: ChickenKesalBBQ,
-					title: "Чикен кесадилья BBQ",
-					measure: "250г",
+					title: 'Чикен кесадилья BBQ',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "7",
+					id: '8',
 					img: ChickenKesal,
-					title: "Чикен кесадилья",
-					measure: "250г",
+					title: 'Чикен кесадилья',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "8",
+					id: '9',
 					img: BeefKesal,
-					title: "Биф кесадилья",
-					measure: "250г",
+					title: 'Биф кесадилья',
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
@@ -139,40 +141,78 @@ const initialState: IState = {
 			],
 		},
 		{
-			id: "400",
-			title: "Начос",
+			id: '400',
+			title: 'Начос',
 			tacoCategory: [
 				{
-					id: "9",
+					id: '10',
 					img: nachos,
 					title: "Начос с соусами 'Сырный' и 'Острый чили'",
-					measure: "250г",
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "10",
+					id: '11',
 					img: nachosChili,
 					title: "Начос с соусами 'Гуакамоле' и 'Острый чили'",
-					measure: "250г",
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
 						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
 				},
 				{
-					id: "11",
+					id: '12',
 
 					img: nachosChili,
 
 					title: 'Начос с соусами "Сальса" и "Острый Чили"',
-					measure: "250г",
+					measure: '250г',
 					quantity: 0,
 					price: 250,
 					description:
-						"Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», ЧеддерQueso blanco",
+						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», ЧеддерQueso blanco',
+				},
+			],
+		},
+		{
+			id: '500',
+			title: 'Соусы',
+			tacoCategory: [
+				{
+					id: '13',
+					img: pico,
+					title: "Начос с соусами 'Сырный' и 'Острый чили'",
+					measure: '250г',
+					quantity: 0,
+					price: 250,
+					description:
+						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
+				},
+				{
+					id: '14',
+					img: halopeno,
+					title: "Начос с соусами 'Гуакамоле' и 'Острый чили'",
+					measure: '250г',
+					quantity: 0,
+					price: 250,
+					description:
+						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», "Чеддер",сыр "Queso blanco". ',
+				},
+				{
+					id: '15',
+
+					img: nachosChili,
+
+					title: 'Начос с соусами "Сальса" и "Острый Чили"',
+					measure: '250г',
+					quantity: 0,
+					price: 250,
+					description:
+						'Пшеничная тортилья, курица, помидоры, кукуруза, сладкий перец, специи (лук, кумин, чеснок, ростки картофеля, орегано, паприка), соус «BBQ», ЧеддерQueso blanco',
 				},
 			],
 		},
@@ -181,8 +221,9 @@ const initialState: IState = {
 	toggleMenu: false,
 }
 
-const rootReducer = (state = initialState, action: IAction) => {
+const rootReducer = (state = initialState, action: IAction): IState => {
 	const { type, payload } = action
+
 	switch (type) {
 		case actionTypeKeys.ADD_TO_CART: {
 			const updatedCart = state.cart.find(el => el.id === payload.id)
@@ -190,16 +231,15 @@ const rootReducer = (state = initialState, action: IAction) => {
 				return {
 					...state,
 					cart: state.cart.map(el =>
-						el.id === payload.id
-							? { ...el, quantity: (el.quantity || 0) + 1 }
-							: el
+						el.id === payload.id ? { ...el, quantity: el.quantity + 1 } : el
 					),
 				}
-			} else
+			} else {
 				return {
 					...state,
 					cart: [...state.cart, { ...payload, quantity: 1 }],
 				}
+			}
 		}
 
 		case actionTypeKeys.REMOVE_FROM_CART: {
@@ -224,12 +264,13 @@ const rootReducer = (state = initialState, action: IAction) => {
 			}
 		}
 
-		case actionTypeKeys.TOGGLE_MODAL :{
+		case actionTypeKeys.TOGGLE_MODAL: {
 			return {
 				...state,
-				showModal: !state.showModal
+				showModal: !state.showModal,
 			}
 		}
+
 		default:
 			return state
 	}
