@@ -1,7 +1,7 @@
 /** @format */
 
 import { useSelector } from 'react-redux'
-import { IState } from '../../Redux/Reducer'
+import { IState } from '../../Redux/actionTypes/types'
 import '../Cart/cart.scss'
 const Cart = () => {
 	const cartTaco = useSelector((state: IState) => state.cart)
