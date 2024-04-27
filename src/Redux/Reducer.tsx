@@ -271,6 +271,13 @@ const rootReducer = (state = initialState, action: IAction): IState => {
 			}
 		}
 
+		case actionTypeKeys.TOGGLE_CART: {
+			return {
+				...state,
+				showCart: !state.showCart,
+			}
+		}
+
 		default:
 			return state
 	}

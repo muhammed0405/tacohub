@@ -1,9 +1,15 @@
 /** @format */
 import { MdDelete } from 'react-icons/md'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
 import { IState } from '../../Redux/actionTypes/types'
 import '../Cart/cart.scss'
 const Cart = () => {
+	const showCart = useSelector((state: IState) => state.showCart)
+	const dispatch = useDispatch()
+	const handleClick = () => {
+		dispatch({ type: actionTypeKeys.TOGGLE_CART })
+	}
 	const cartTaco = useSelector((state: IState) => state.cart)
 	console.log(' cartTaco', cartTaco)
 	const totalSum = cartTaco.reduce((acc, el) => {
@@ -11,8 +17,8 @@ const Cart = () => {
 	}, 0)
 
 	return (
-		<div className='cart__node'>
-			<h1>ваш заказ</h1>
+		<div className='cart__node' style={{ display: showCart ? 'flex' : 'none' }}>
+			<div className='left__div' onClick={handleClick}></div>
 			<hr />
 			<div className='cart'>
 				{cartTaco.map(el => (

@@ -8,9 +8,9 @@ function App() {
 	return (
 		<>
 			<Header />
+			<Cart />
 			<Routes>
 				<Route path='/' element={<Home />} />
-				<Route path='/cart' element={<Cart />} />
 			</Routes>
 		</>
 	)
