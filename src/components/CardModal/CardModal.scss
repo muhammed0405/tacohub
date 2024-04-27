@@ -88,6 +88,41 @@
 				align-items: center;
 				padding: 10px 0;
 				width: 150px;
+
+				.minus_hide {
+					display: block;
+					border-radius: 5px;
+					color: #000;
+					height: 35px;
+					width: 35px;
+					text-align: center;
+					line-height: 35px;
+				}
+
+				button {
+					border: none;
+					background: none;
+					font-size: 24px;
+				}
+				button:active {
+					background-color: purple;
+				}
+
+				.minus {
+					width: 35px;
+					opacity: 0.3;
+					height: 35px;
+				}
+
+				.plus {
+					display: block;
+					border-radius: 5px;
+					color: #000;
+					height: 35px;
+					width: 35px;
+					text-align: center;
+					line-height: 35px;
+				}
 			}
 		}
 	}

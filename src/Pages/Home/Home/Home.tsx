@@ -130,7 +130,10 @@ const TacoGallery: React.FC = () => {
 					))}
 				</div>
 			</div>
-			{showCard && <CardModal taco={itemIdToModal} />}
+			<button className={cart.length > 0 ? "order" : "order_hide"}>
+				Заказать
+			</button>
+			{showCard && <CardModal taco={itemIdToModal!} />}
 		</div>
 	)
 }
