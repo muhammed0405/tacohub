@@ -1,24 +1,40 @@
 .cart__node {
+	border: 3px solid green;
+
 	display: flex;
-	flex-direction: column;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+
 	align-items: center;
 	.left__div {
-		width: 65%;
+		border: 3px solid blue;
+		opacity: 0.5;
+
+		width: 75%;
+		height: 100vh;
 		background: black;
 	}
+	.right__div {
+		background-color: white;
+		height: 100vh;
+	}
 	.cart {
+		display: flex;
+		flex-direction: column;
 		max-height: 300px;
-		width: 100%;
 		overflow-y: auto;
 	}
 
 	.cart__container {
+		width: 365px;
 		border-bottom: 1px solid;
 		display: flex;
 		justify-content: start;
 		align-items: center;
 		h1 {
 			font-size: 10px;
+			margin-right: 25%;
 		}
 		img {
 			margin: 10px;
@@ -44,6 +60,9 @@
 		font-size: 18px;
 		font-weight: 400;
 		margin: 5px;
+		span{
+		margin: 2px;
+		}
 	}
 	&__baner {
 		display: flex;
