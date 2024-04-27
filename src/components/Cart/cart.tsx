@@ -47,7 +47,7 @@ const handleIncQuantity = (e:IImage) => {
 					))}
 					<hr />
 				</div>
-				<h2> Стоимость{totalSum}Р</h2>
+				<h2> <span>Стоимость</span>{totalSum} <span>рубль</span> </h2>
 
 				{
 					cartTaco.length === 0 ?"" : <div className='cart__node__baner'>

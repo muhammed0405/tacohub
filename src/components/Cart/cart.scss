@@ -20,7 +20,6 @@
 		height: 100vh;
 	}
 	.cart {
-		border: 3px solid red;
 		display: flex;
 		flex-direction: column;
 		max-height: 300px;
@@ -61,6 +60,9 @@
 		font-size: 18px;
 		font-weight: 400;
 		margin: 5px;
+		span{
+		margin: 2px;
+		}
 	}
 	&__baner {
 		display: flex;
