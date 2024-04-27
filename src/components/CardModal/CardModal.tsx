@@ -1,24 +1,54 @@
 /** @format */
 
-import { IImage } from "../../Redux/actionTypes/types"
+import { IoClose } from "react-icons/io5"
+import { useDispatch, useSelector } from "react-redux"
+import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
+import { IImage, IState } from "../../Redux/actionTypes/types"
 import "./CardModal.scss"
 interface IProps {
 	taco: IImage
 }
 
 export default function CardModal({ taco }: IProps) {
-	console.log("tacoId", taco)
-
+	const cart = useSelector((state: IState) => state.cart)
 	
+	console.log("tacoId", taco)
+	const getQuantity = (id: string) => {
+		const item = cart.find(el => el.id === id)
+		return item ? item.quantity : 0
+	}
+
+	const dispatch = useDispatch()
+
+	const handleCloseCard = () => {
+		dispatch({
+			type: actionTypeKeys.TOGGLE_MODAL,
+		})
+	}
+
+	const handleAddToCart = (e: IImage) => {
+		dispatch({
+			type: actionTypeKeys.ADD_TO_CART,
+			payload: e,
+		})
+	}
+
+	const handleRemoveFromCart = (e: IImage) => {
+		dispatch({
+			type: actionTypeKeys.REMOVE_FROM_CART,
+			payload: e,
+		})
+	}
 
 	return (
-		<div className="cardModal">
-			<div className="card__wrap">
+		<div className="cardModal" onClick={handleCloseCard}>
+			<div className="card__wrap" onClick={handleCloseCard}>
 				<div className="card__img">
 					<img src={taco.img} alt="" />
 				</div>
-				
-
+				<button className="card__close" onClick={handleCloseCard}>
+					<IoClose />
+				</button>
 				<div className="card__info">
 					<h3 className="card__title">{taco.title}</h3>
 					<h2 className="card__price">
@@ -55,14 +85,13 @@ export default function CardModal({ taco }: IProps) {
 					</div>
 
 					<div className="product_change">
-						<button
-						>
-							-
-						</button>
-						<span className="count">{taco.quantity}</span>
-						<button className="plus" >
-							+
-						</button>
+
+						<button className={
+							getQuantity(taco.id) === 0 ? "minus" : "minus_hide"
+						}  
+						onClick={() => handleRemoveFromCart(taco)}>-</button>
+						<span className="count">{getQuantity(taco.id)}</span>
+						<button className="plus" onClick={() => handleAddToCart(taco)}>+</button>
 					</div>
 				</div>
 			</div>
