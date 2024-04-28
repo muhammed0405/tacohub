@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState } from "react"
+import { FaShoppingCart } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import CardModal from "../../../components/CardModal/CardModal"
 import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
@@ -12,8 +13,9 @@ const TacoGallery: React.FC = () => {
 	const cart = useSelector((state: IState) => state.cart)
 	const showCard = useSelector((state: IState) => state.showModal)
 	const [activeTaco, setActiveTaco] = useState<string | null>(null)
-
+	const dispatch = useDispatch()
 	const [itemIdToModal, setItemIdToModal] = useState<IImage>()
+
 	const getQuantity = (id: string) => {
 		const item = cart.find(el => el.id === id)
 		return item ? item.quantity : 0
@@ -21,20 +23,18 @@ const TacoGallery: React.FC = () => {
 
 	const handleShowCard = (e: IImage) => {
 		setItemIdToModal(e)
-
-		dispatch({
-			type: actionTypeKeys.TOGGLE_MODAL,
-		})
+		if (e) {
+			dispatch({
+				type: actionTypeKeys.TOGGLE_MODAL,
+			})
+		}
 	}
-
-	const dispatch = useDispatch()
 
 	const handleAddToCart = (e: IImage) => {
 		dispatch({
 			type: actionTypeKeys.ADD_TO_CART,
 			payload: e,
 		})
-		console.log(e, "is isis")
 	}
 
 	const handleRemoveFromCart = (e: IImage) => {
@@ -48,7 +48,7 @@ const TacoGallery: React.FC = () => {
 		<div className="container">
 			<div className="menu">
 				<div className="left__menu">
-					<div className={"categories__wrap"}>
+					<div className="categories__wrap">
 						<div className="menu__head">Меню</div>
 						{tacos.map(taco => (
 							<div className="left__menu__category" key={taco.id}>
@@ -111,7 +111,9 @@ const TacoGallery: React.FC = () => {
 														</span>
 														<button
 															className="plus"
-															onClick={() => handleAddToCart(item)}
+															onClick={() => {
+																handleAddToCart(item)
+															}}
 														>
 															+
 														</button>
@@ -130,9 +132,10 @@ const TacoGallery: React.FC = () => {
 					))}
 				</div>
 			</div>
-			<button className={cart.length > 0 ? "order" : "order_hide"}>
-				Заказать
-			</button>
+			<div className={cart.length > 0 ? "order" : "order_hide"}>
+				<FaShoppingCart /> {" "}В корзинy{" "}
+				{itemIdToModal && getQuantity(itemIdToModal!.id)}
+			</div>
 			{showCard && <CardModal taco={itemIdToModal!} />}
 		</div>
 	)

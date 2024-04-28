@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			setIsShrunk(window.scrollY > 50)
+			setIsShrunk(window.scrollY > 70)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -28,9 +28,6 @@ const Header: React.FC = () => {
 
 	const cart = useSelector((state: IState) => state.cart)
 
-	// const [productsCount, setProductsCount] = useState<number>(0)
-
-	// const [toggleMenu, setToggleMenu] = useState<boolean>(false)
 	const toggleCart = () => {
 		dispatch({ type: actionTypeKeys.TOGGLE_CART })
 	}
@@ -38,9 +35,6 @@ const Header: React.FC = () => {
 		return acc + el.price * el.quantity
 	}, 0)
 
-	// useEffect(() => {
-	// 	setProductsCount(getQuantity)
-	// }, [cart])
 
 	return (
 		<div
