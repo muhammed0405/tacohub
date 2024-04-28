@@ -30,6 +30,7 @@ const Cart = () => {
       <hr />
 
       <div className='right__div'>
+        <h1 className='cart__title'>Ваш заказ</h1>
         <div className='cart'>
           {cartTaco.map(el => (
             <div className='cart__container' key={el.id}>
@@ -55,8 +56,8 @@ const Cart = () => {
         </div>
         <div className='cart__summary'>
           {discount > 0 && (
-            <h2>
-              <span>Скидка:</span>
+            <h2 className='discount'>
+              <span>Скидка:10%</span>
               {discount.toFixed(2)} <span>рубль</span>
             </h2>
           )}
