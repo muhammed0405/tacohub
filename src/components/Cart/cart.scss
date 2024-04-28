@@ -32,8 +32,17 @@
 		display: flex;
 		justify-content: start;
 		align-items: center;
+		.cart__img {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-right: 33%;
+		}
 		h1 {
-			font-size: 10px;
+			font-weight: 400;
+		font-size: 13px;
+		line-height: 110%;
+		color: #555;
 			margin-right: 25%;
 		}
 		img {
@@ -52,24 +61,44 @@
 
 	.cart__btns {
 		display: flex;
-		justify-content: start;
+		justify-content: center;
 		align-items: center;
-		gap: 8px;
+		gap: 5px;
+		margin: 5px 0;
+		.cart__btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			border: none;
+		}
+		.cart__btn:active {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			background: fuchsia;
+			border-radius: 5px;
+		}
 	}
 	h2 {
-		font-size: 18px;
 		font-weight: 400;
-		margin: 5px;
+		font-size: 14px;
+		line-height: 110%;
+		color: #555;
+		margin: 15px;
 		span{
 		margin: 2px;
 		}
 	}
-	&__baner {
+	.cart__banner {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		background: fuchsia;
-		width: 90%;
+		width: 100%;
 		height: 50px;
 		border-radius: 5px;
 	}
