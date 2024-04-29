@@ -44,6 +44,11 @@ const TacoGallery: React.FC = () => {
 		})
 	}
 
+	const handleToggleCart = () => {
+		dispatch({
+			type: actionTypeKeys.TOGGLE_CART,
+		})
+	}
 	return (
 		<div className="container">
 			<div className="menu">
@@ -132,8 +137,11 @@ const TacoGallery: React.FC = () => {
 					))}
 				</div>
 			</div>
-			<div className={cart.length > 0 ? "order" : "order_hide"}>
-				<FaShoppingCart /> {" "}В корзинy{" "}
+			<div
+				className={cart.length > 0 ? "order" : "order_hide"}
+				onClick={handleToggleCart}
+			>
+				<FaShoppingCart /> В корзинy{" "}
 				{itemIdToModal && getQuantity(itemIdToModal!.id)}
 			</div>
 			{showCard && <CardModal taco={itemIdToModal!} />}

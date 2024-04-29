@@ -2,7 +2,9 @@
   position: relative;
   padding: 1.5rem;
 }
-
+#menu-toggle {
+  z-index: 15000;
+}
 .menu-toggle {
   position: absolute;
   right: 1.5rem;

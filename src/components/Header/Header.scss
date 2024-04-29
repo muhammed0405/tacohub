@@ -55,20 +55,29 @@ html {
 					padding-top: 20px;
 					padding-right: 25%;
 					button {
-						border-radius: 5px;
-						color: white;
-						font-weight: 600;
-						padding: 5px 20px;
+						display: flex;
+						align-items: center;
+						gap: 0 10px;
 						background: none;
-						border: 2px solid aqua;
-						transition: 0.4s ease-in-out;
+						border-radius: 5px;
+						width: 150px;
+						color: white;
+						font-size: large;
+						font-weight: 600;
+						padding: 10px 20px;
+						border: 1px solid wheat;
 						cursor: pointer;
+
+
+						p{
+						color: white;
+						font-size: large;
+						font-weight: 600;
+
+						}
 					}
 
-					button:hover {
-						color: black;
-						background-color: aqua;
-					}
+					
 				}
 				.header__cart {
 					display: none;
@@ -152,6 +161,8 @@ html {
 			}
 
 			.header__blog {
+			padding: 0 0 5px 0 ;
+
 				width: 30%;
 				.header__contact {
 					margin: 0 0 20px 30%;
@@ -171,8 +182,8 @@ html {
 					button {
 						width: 100%;
 						padding: 5px 20px;
-						height: 45px;
-
+						height: 46px;
+						border: none;
 						background: none;
 						display: flex;
 						align-items: center;

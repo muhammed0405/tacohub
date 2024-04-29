@@ -3,14 +3,23 @@
 import { FaGift, FaMap } from 'react-icons/fa'
 import { FiLogIn } from 'react-icons/fi'
 import { IoLocationSharp } from 'react-icons/io5'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { IState } from '../../../Redux/actionTypes/types'
 import Logo from '../../../assets/img/Logo.svg'
 import './HeaderMenu.scss'
+import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
 
 function HeaderMenu() {
+	const dispatch = useDispatch()
 	const showModal = useSelector((state: IState) => state.toggleMenu)
+
+	const handleMenuToggle = () => {
+		dispatch({
+			type: actionTypeKeys.TOGGLE_MENU
+		})
+	
+	}
 	return (
 		<div
 			className={
@@ -18,7 +27,7 @@ function HeaderMenu() {
 			}
 		>
 			<div className='row'>
-				<div className='header__content__menu_gray'></div>
+				<div className='header__content__menu_gray' onClick={handleMenuToggle}></div>
 				<div className='header__content__menu__logo'>
 					<img src={Logo} alt='' />
 				</div>

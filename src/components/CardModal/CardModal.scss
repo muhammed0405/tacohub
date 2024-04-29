@@ -10,8 +10,10 @@
 	height: 100%;
 	display: grid;
 	place-items: center;
+	overflow: auto;
 
 	.card__wrap {
+		overflow: auto;
 		border-radius: 5px;
 		position: relative;
 		background-color: white;
@@ -23,6 +25,7 @@
 			position: absolute;
 			top: 20px;
 			right: 20px;
+			font-size: 30px;
 			background-color: transparent;
 			border: none;
 			cursor: pointer;
@@ -42,6 +45,7 @@
 
 			.card__title {
 				margin-bottom: 20px;
+				width: 90%;
 			}
 
 			.card__price {
@@ -98,7 +102,7 @@
 				button {
 					border: none;
 					background: none;
-					font-size: 24px;
+					font-size: 30px;
 				}
 				button:active {
 					background-color: purple;
@@ -106,7 +110,7 @@
 
 				.minus {
 					width: 35px;
-					opacity: 0.3;
+					opacity: 0;
 					height: 35px;
 				}
 
@@ -118,6 +122,50 @@
 					width: 35px;
 					text-align: center;
 					line-height: 35px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1400px) {
+	.cardModal {
+		.card__wrap {
+			width: 60%;
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.cardModal {
+		.card__wrap {
+			width: 70%;
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.cardModal {
+		z-index: 12000;
+		.card__wrap {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 20px;
+
+			.card__img {
+				width: 50%;
+			}
+			.card__info {
+				width: 90%;
+				.card__description {
+					margin: 10px 0 ;
+				}
+
+				div{
+					padding: 5px 0;
 				}
 			}
 		}

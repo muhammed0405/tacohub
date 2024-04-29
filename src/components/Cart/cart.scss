@@ -1,9 +1,10 @@
-.cart__node {
+/** @format */
 
-	display: flex; 
+.cart__node {
+	display: flex;
 	position: fixed;
 	width: 100%;
-	z-index: 1000;
+	z-index: 10;
 	align-items: center;
 	.left__div {
 		opacity: 0.5;
@@ -12,15 +13,18 @@
 		background: black;
 	}
 	.right__div {
-		
 		margin-right: 0;
 		background-color: white;
 		height: 100vh;
 		width: 25%;
-		.cart__title{
-			font-size:24px ;
+		.cart__title {
+			font-size: 24px;
 			font-weight: 600;
 			margin: 20px 10px;
+		}
+
+		.cart__close {
+			display: none;
 		}
 	}
 	.cart {
@@ -29,7 +33,7 @@
 		max-height: 300px;
 		overflow-y: auto;
 		overflow-x: hidden;
-margin-bottom: 50px;
+		margin-bottom: 50px;
 	}
 
 	.cart__container {
@@ -46,9 +50,9 @@ margin-bottom: 50px;
 		h1 {
 			width: 150px;
 			font-weight: 400;
-		font-size: 13px;
-		line-height: 110%;
-		color: #555;
+			font-size: 13px;
+			line-height: 110%;
+			color: #555;
 		}
 		img {
 			margin: 10px;
@@ -94,13 +98,13 @@ margin-bottom: 50px;
 		line-height: 110%;
 		color: #555;
 		margin: 15px;
-		span{
-		margin: 2px;
+		span {
+			margin: 2px;
 		}
 	}
-	.cart__summary{
+	.cart__summary {
 		margin: 40px 0 0 0;
-		.discount{
+		.discount {
 			color: green;
 		}
 	}
@@ -112,5 +116,45 @@ margin-bottom: 50px;
 		width: 100%;
 		height: 50px;
 		border-radius: 5px;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.cart__node {
+		height: 100vh;
+		.left__div {
+			display: none;
+		}
+		.right__div {
+			width: 100%;
+
+			.cart__title {
+				font-size: 24px;
+				font-weight: 600;
+				margin: 20px 10px;
+			}
+
+			.cart__close {
+				display: flex;
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				font-size: 30px;
+				color: black;
+				border: none;
+				background: none;
+			}
+
+			.cart {
+				display: flex;
+				flex-direction: column;
+				max-height: 300px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				.cart__container {
+					width: 100%;
+				}
+			}
+		}
 	}
 }
