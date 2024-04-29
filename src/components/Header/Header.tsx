@@ -31,9 +31,11 @@ const Header: React.FC = () => {
 	const toggleCart = () => {
 		dispatch({ type: actionTypeKeys.TOGGLE_CART })
 	}
-	const totalSum = cart.reduce((acc, el) => {
+	const subtotal = cart.reduce((acc, el) => {
 		return acc + el.price * el.quantity
 	}, 0)
+	const discount = subtotal > 3000 ? subtotal * 0.1 : 0;
+  const totalSum = subtotal - discount;
 
 	return (
 		<div

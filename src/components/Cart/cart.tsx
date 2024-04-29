@@ -1,8 +1,10 @@
+import { useState } from 'react'
+import { ImSpoonKnife } from "react-icons/im"
+import { IoClose } from "react-icons/io5"
 import { useDispatch, useSelector } from 'react-redux'
 import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
 import { IImage, IState } from '../../Redux/actionTypes/types'
 import '../Cart/cart.scss'
-import { IoClose } from "react-icons/io5"
 
 const Cart = () => {
   const showCart = useSelector((state: IState) => state.showCart);
@@ -10,11 +12,12 @@ const Cart = () => {
   const handleClick = () => {
     dispatch({ type: actionTypeKeys.TOGGLE_CART });
   };
+  const [count, setCount] =  useState(0)
   const cartTaco = useSelector((state: IState) => state.cart);
   console.log('cartTaco', cartTaco);
 
   const subtotal = cartTaco.reduce((acc, el) => acc + el.price * el.quantity, 0);
-  const discount = subtotal > 3000 ? subtotal * 0.1 : 0;
+  const discount = subtotal > 200 ? subtotal * 0.01 : 0;
   const totalSum = subtotal - discount;
 
   const handleDicQuantity = (e: IImage) => {
@@ -59,29 +62,57 @@ const Cart = () => {
 										+
 									</button>
 								</div>
+								
 							</div>
 						</div>
 					))}
 					<hr />
 				</div>
+
 				<div className="cart__summary">
-					{discount > 0 && (
-						<h2 className="discount">
-							<span>Скидка:10%</span>
-							{discount.toFixed(2)} <span>рубль</span>
-						</h2>
+        <div className="count">
+    <div className="cart__img">
+    <span>{
+<ImSpoonKnife />
+            
+            }</span>
+            <p>количество персон</p>
+    </div>
+            <div className="cart__btns">
+            <button className='cart__btn' onClick={() => setCount(count>0 ? count - 1 : count )}>-</button>
+            <h1>{count}</h1>
+            
+            <button className="cart__btn" onClick={() => setCount(count + 1)}>+</button>
+            </div>
+            </div>
+					<hr />
+
+					<div className="cart_cost">
+          <div className='discount'>
+						<span>Стоимость</span> {subtotal} рубль</div>
+          {discount > 0 && (
+            
+						<div className="discount">
+             
+							<p>Скидка:</p>
+						<p>	-{discount.toFixed(2)} рубль</p>
+						</div>
 					)}
-					<h2>
+					<div className='discount'>
 						<span>Итого стоимость:</span>
-						{totalSum.toFixed(2)} <span>рубль</span>
-					</h2>
+						<span>	{totalSum.toFixed(2)} рубль</span>
+					</div>
+          </div>
+
 				</div>
 
 				{cartTaco.length === 0 ? (
-					<p>Корзина пуста</p>
+					""
 				) : (
+          
 					<div className="cart__banner">
 						<p>Оформить заказ</p>
+            
 					</div>
 				)}
 			</div>
