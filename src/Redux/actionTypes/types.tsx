@@ -19,19 +19,17 @@ export interface ITaco {
 
 export interface IState {
 	showModal: boolean
-	meals: ITaco[]
+	tacos: ITaco[]
 	toggleMenu: boolean
 	showCart: boolean
 	cart: IImage[]
 }
 interface IToggleMenu {
 	type: typeof actionTypeKeys.TOGGLE_MENU
-	payload?: any
 }
 
 interface IToggleCart {
 	type: typeof actionTypeKeys.TOGGLE_CART
-	payload?: any
 }
 
 interface IAddToCart {
@@ -54,7 +52,6 @@ interface IUpdateMealQuantity {
 
 interface IToggleModal {
 	type: typeof actionTypeKeys.TOGGLE_MODAL
-	payload?: any
 }
 
 export type IAction =

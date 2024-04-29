@@ -1,85 +1,89 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
-import { IImage, IState } from '../../Redux/actionTypes/types'
-import '../Cart/cart.scss'
+/** @format */
+
 import { IoClose } from "react-icons/io5"
+import { useDispatch, useSelector } from "react-redux"
+import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
+import { IImage, IState } from "../../Redux/actionTypes/types"
+import "../Cart/cart.scss"
 
 const Cart = () => {
-  const showCart = useSelector((state: IState) => state.showCart);
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch({ type: actionTypeKeys.TOGGLE_CART });
-  };
-  const cartTaco = useSelector((state: IState) => state.cart);
-  console.log('cartTaco', cartTaco);
+	const isCartOpen = useSelector((state: IState) => state.showCart)
+	const dispatch = useDispatch()
+	const handleClose = () => dispatch({ type: actionTypeKeys.TOGGLE_CART })
 
-  const subtotal = cartTaco.reduce((acc, el) => acc + el.price * el.quantity, 0);
-  const discount = subtotal > 3000 ? subtotal * 0.1 : 0;
-  const totalSum = subtotal - discount;
+	const cartItems = useSelector((state: IState) => state.cart)
+	const subtotal = cartItems.reduce(
+		(total, item) => total + item.price * item.quantity,
+		0
+	)
+	const discount = subtotal > 3000 ? subtotal * 0.1 : 0
+	const totalPrice = subtotal - discount
 
-  const handleDicQuantity = (e: IImage) => {
-    dispatch({ type: actionTypeKeys.REMOVE_FROM_CART, payload: e });
-  };
+	const handleDecreaseQuantity = (item: IImage) =>
+		dispatch({ type: actionTypeKeys.REMOVE_FROM_CART, payload: item })
+	const handleIncreaseQuantity = (item: IImage) =>
+		dispatch({ type: actionTypeKeys.ADD_TO_CART, payload: item })
 
-  const handleIncQuantity = (e: IImage) => {
-    dispatch({ type: actionTypeKeys.ADD_TO_CART, payload: e });
-  };
-
-  return (
-		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
-			<div className="left__div" onClick={handleClick}></div>
+	return (
+		<div
+			className="cart__node"
+			style={{ display: isCartOpen ? "flex" : "none" }}
+		>
+			<div className="left__div" onClick={handleClose} />
 			<hr />
 
 			<div className="right__div">
 				<h1 className="cart__title">Ваш заказ</h1>
-				<button className="cart__close" onClick={handleClick}>
+				<button className="cart__close" onClick={handleClose}>
 					<IoClose />
 				</button>
 				<div className="cart">
-					{cartTaco.map(el => (
-						<div className="cart__container" key={el.id}>
-							<div className="cart__img">
-								<img src={el.img} alt={el.title || "Taco Image"} />
-								<h1>{el.title}</h1>
-							</div>
-							<div className="cart__count">
-								<p>{el.quantity * el.price} рубль</p>
-								<div className="cart__btns">
-									<button
-										className="cart__btn"
-										onClick={() => handleDicQuantity(el)}
-									>
-										-
-									</button>
-									<p>{el.quantity}</p>
-									<button
-										className="cart__btn"
-										onClick={() => handleIncQuantity(el)}
-									>
-										+
-									</button>
+					{cartItems.length > 0 ? (
+						cartItems.map(item => (
+							<div key={item.id} className="cart__container">
+								<div className="cart__img">
+									<img src={item.img} alt={item.title || "Taco Image"} />
+									<h1>{item.title}</h1>
+								</div>
+								<div className="cart__count">
+									<p>{item.price * item.quantity} рубль</p>
+									<div className="cart__btns">
+										<button
+											className="cart__btn"
+											onClick={() => handleDecreaseQuantity(item)}
+										>
+											-
+										</button>
+										<p>{item.quantity}</p>
+										<button
+											className="cart__btn"
+											onClick={() => handleIncreaseQuantity(item)}
+										>
+											+
+										</button>
+									</div>
 								</div>
 							</div>
-						</div>
-					))}
-					<hr />
-				</div>
-				<div className="cart__summary">
-					{discount > 0 && (
-						<h2 className="discount">
-							<span>Скидка:10%</span>
-							{discount.toFixed(2)} <span>рубль</span>
-						</h2>
+						))
+					) : (
+						<p>Корзина пуста</p>
 					)}
-					<h2>
-						<span>Итого стоимость:</span>
-						{totalSum.toFixed(2)} <span>рубль</span>
-					</h2>
 				</div>
-
-				{cartTaco.length === 0 ? (
-					<p>Корзина пуста</p>
-				) : (
+				{cartItems.length > 0 && (
+					<div className="cart__summary">
+						{discount > 0 && (
+							<h2 className="discount">
+								<span>Скидка:10%</span>
+								{discount.toFixed(2)} <span>рубль</span>
+							</h2>
+						)}
+						<h2>
+							<span>Итого стоимость:</span>
+							{totalPrice.toFixed(2)} <span>рубль</span>
+						</h2>
+					</div>
+				)}
+				{cartItems.length > 0 && (
 					<div className="cart__banner">
 						<p>Оформить заказ</p>
 					</div>
@@ -87,6 +91,6 @@ const Cart = () => {
 			</div>
 		</div>
 	)
-};
+}
 
-export default Cart;
+export default Cart

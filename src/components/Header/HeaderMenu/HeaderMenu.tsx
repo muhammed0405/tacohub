@@ -29,7 +29,7 @@ function HeaderMenu() {
 			<div className='row'>
 				<div className='header__content__menu_gray' onClick={handleMenuToggle}></div>
 				<div className='header__content__menu__logo'>
-					<img src={Logo} alt='' />
+					<img rel="preload" src={Logo} alt='' />
 				</div>
 
 				<nav>

@@ -9,7 +9,7 @@ import { IImage, IState, ITaco } from "../../../Redux/actionTypes/types"
 import "./Home.scss"
 
 const TacoGallery: React.FC = () => {
-	const tacos = useSelector((state: IState) => state.meals)
+	const tacos = useSelector((state: IState) => state.tacos)
 	const cart = useSelector((state: IState) => state.cart)
 	const showCard = useSelector((state: IState) => state.showModal)
 	const [activeTaco, setActiveTaco] = useState<string | null>(null)
@@ -83,6 +83,8 @@ const TacoGallery: React.FC = () => {
 										<div className="product__content">
 											<div className="product__img__container">
 												<img
+													fetchPriority="high"
+													rel="preload"
 													src={item.img}
 													alt={`Сүрөт ${index + 1}`}
 													onClick={() => handleShowCard(item)}
