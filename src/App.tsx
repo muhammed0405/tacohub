@@ -1,9 +1,13 @@
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import Home from './Pages/Home/Home/Home'
-import Cart from './components/Cart/cart'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/footer'
+/** @format */
+
+import { Route, Routes } from "react-router-dom"
+import "./App.css"
+import Cart from "./components/Cart/cart"
+import Footer from "./components/Footer/footer"
+import Header from "./components/Header/Header"
+import Home from "./Pages/Home/Home/Home"
+import Reviews from "./Pages/Reviews/Reviews"
+import Sales from "./Pages/Sales/Sales"
 
 function App() {
 	return (
@@ -11,9 +15,11 @@ function App() {
 			<Header />
 			<Cart />
 			<Routes>
-				<Route path='/' element={<Home />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/sales" element={<Sales />} />
+				<Route path="/reviews" element={<Reviews />} />
 			</Routes>
-			<Footer/>
+			<Footer />
 		</>
 	)
 }
