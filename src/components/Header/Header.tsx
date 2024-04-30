@@ -34,7 +34,7 @@ const Header: React.FC = () => {
 	const subtotal = cart.reduce((acc, el) => {
 		return acc + el.price * el.quantity
 	}, 0)
-	const discount = subtotal > 3000 ? subtotal * 0.1 : 0;
+	const discount = subtotal > 200 ? subtotal * 0.1 : 0;
   const totalSum = subtotal - discount;
 
 	return (
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
 								<NavLink to={"/delivery"}>О доставке</NavLink>
 								<NavLink to={"/reviews"}>Отзывы</NavLink>
 								<span>
-									<NavLink to={"/address"}>г Москва, ул Авангардная</NavLink>
+									<NavLink to={"/address"}>г Ош, ул Масалиева</NavLink>
 								</span>
 							</div>
 						</div>
@@ -84,13 +84,15 @@ const Header: React.FC = () => {
 								isShrunk ? "header__contact--shrunk" : "header__contact"
 							}
 						>
-							<h2>+7977323049</h2>
+							<h2>+79773230449</h2>
 						</div>
 						<div className="header__auth">
 							<div className="header__logIn">
 								<button>
 									{" "}
-									<FaUser />
+								<span className='header__logIn__icon'>
+								<FaUser />
+								</span>
 									<p>Войти</p>
 								</button>
 							</div>
@@ -102,7 +104,9 @@ const Header: React.FC = () => {
 								}}
 							>
 								<button>
+									<span className='header__logIn__icon'>
 									<FaShoppingCart />
+									</span>
 									<div className="cart__info">
 										<p>{cart.length} товаров</p>
 										<p>{totalSum} ценa </p>
