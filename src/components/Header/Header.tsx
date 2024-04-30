@@ -49,6 +49,7 @@ const Header: React.FC = () => {
 					<div className="header__div">
 						<div className="header__logo">
 							<img
+								rel="preload"
 								src={Logo}
 								alt=""
 								style={{
