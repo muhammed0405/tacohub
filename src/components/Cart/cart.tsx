@@ -92,15 +92,20 @@ const Cart = () => {
 						<div className='discount'>
 							<span>Стоимость</span> {subtotal} рубль
 						</div>
+						<div className='discount'>
+								<span>Доставка</span>
+								<span>бесплатно</span>
+							</div>
 						{discount > 0 && (
 							<div className='discount'>
 								<p>Скидка:</p>
-								<p> -{discount.toFixed(2)} рубль</p>
+								<p> -{discount.toFixed(0)} рубль</p>
 							</div>
+							
 						)}
 						<div className='discount'>
 							<span>Итого стоимость:</span>
-							<span> {totalSum.toFixed(2)} рубль</span>
+							<span> {totalSum.toFixed(0)} рубль</span>
 						</div>
 					</div>
 				</div>

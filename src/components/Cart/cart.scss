@@ -107,17 +107,15 @@
 	.cart__summary {
 		padding: 0 10px;
 		margin: 40px 0 0 0;
-		.discount{
+		.discount {
 			display: flex;
 			justify-content: space-between;
 			margin: 10px 0;
-			 p{
-				color: rgb(31, 234, 95);
-				
-				
+			p {
+				font-weight: 600;
+				color: #00a800;
 			}
 		}
-		
 	}
 	.cart__banner {
 		display: grid;
@@ -136,7 +134,7 @@
 			font-size: 15px;
 			font-weight: 400;
 		}
-		 
+
 		display: flex;
 	}
 	.cart_cost {
