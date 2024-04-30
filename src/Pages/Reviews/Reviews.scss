@@ -1,0 +1,30 @@
+/** @format */
+
+.reviews {
+	display: grid;
+	place-items: center;
+
+	h2 {
+		margin: 50px 0;
+		text-align: start;
+	}
+	&__wrap {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		width: 70%;
+
+		gap: 20px;
+	}
+
+	&__content {
+		border-radius: 5px;
+		padding: 20px;
+		background-color: white;
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+
+		h4 {
+			color: orange;
+			margin: 10px 0;
+		}
+	}
+}
