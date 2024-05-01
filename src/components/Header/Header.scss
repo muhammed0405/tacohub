@@ -68,16 +68,12 @@ html {
 						border: 1px solid wheat;
 						cursor: pointer;
 
-
-						p{
-						color: white;
-						font-size: large;
-						font-weight: 600;
-
+						p {
+							color: white;
+							font-size: large;
+							font-weight: 600;
 						}
 					}
-
-					
 				}
 				.header__cart {
 					display: none;
@@ -161,7 +157,7 @@ html {
 			}
 
 			.header__blog {
-			padding: 0 0 5px 0 ;
+				padding: 0 0 5px 0;
 
 				width: 30%;
 				.header__contact {
@@ -173,7 +169,6 @@ html {
 
 				.header__contact--shrunk {
 					display: none;
-					
 				}
 
 				.header__auth {
@@ -187,19 +182,27 @@ html {
 						background: none;
 						display: flex;
 						align-items: center;
-						justify-content: center;
+						justify-content: space-around;
 						gap: 0 10px;
 						font-size: 28px;
 						transition: 0.3s ease-in-out;
 						cursor: pointer;
-						p{color: white;}
-						.header__logIn__icon{
-							color:#fff;
+						p {
+							color: white;
+							font-size: large;
+						}
+
+						.header__logIn__icon {
+							color: #fff;
 						}
 					}
 
 					button:hover {
 						background: #ffe271;
+
+						p {
+							color: black;
+						}
 					}
 					.header__logIn {
 						width: 100%;
@@ -207,6 +210,14 @@ html {
 
 					.header__cart {
 						width: 100%;
+						.cart__pending {
+							width: 50%;
+						}
+
+						.header__cart__icon {
+							margin-left: 0 auto;
+							color: white;
+						}
 
 						.cart__info {
 							display: flex;

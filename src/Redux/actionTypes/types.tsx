@@ -1,7 +1,7 @@
 /** @format */
 
 import { actionTypeKeys } from "./actionTypes"
-export interface IImage {
+export interface ITaco {
 	id: string
 	img: string
 	title: string
@@ -11,18 +11,18 @@ export interface IImage {
 	quantity: number
 }
 
-export interface ITaco {
+export interface ITacos {
 	id: string
 	title: string
-	tacoCategory: IImage[]
+	tacoCategory: ITaco[]
 }
 
 export interface IState {
 	showModal: boolean
-	tacos: ITaco[]
+	tacos: ITacos[]
 	toggleMenu: boolean
 	showCart: boolean
-	cart: IImage[]
+	cart: ITaco[]
 }
 interface IToggleMenu {
 	type: typeof actionTypeKeys.TOGGLE_MENU
@@ -34,15 +34,15 @@ interface IToggleCart {
 
 interface IAddToCart {
 	type: typeof actionTypeKeys.ADD_TO_CART
-	payload: IImage
+	payload: ITaco
 }
 interface IRemoveFromCart {
 	type: typeof actionTypeKeys.REMOVE_FROM_CART
-	payload: IImage
+	payload: ITaco
 }
 interface IUpdateCartItemPrice {
 	type: typeof actionTypeKeys.UPDATE_CART_ITEM_PRICE
-	payload: IImage
+	payload: ITaco
 }
 
 interface IUpdateMealQuantity {
@@ -53,7 +53,9 @@ interface IUpdateMealQuantity {
 interface IToggleModal {
 	type: typeof actionTypeKeys.TOGGLE_MODAL
 }
-
+interface IClearCart {
+	type: typeof actionTypeKeys.CLEAR_CART
+}
 export type IAction =
 	| IToggleMenu
 	| IToggleCart
@@ -62,3 +64,4 @@ export type IAction =
 	| IUpdateCartItemPrice
 	| IUpdateMealQuantity
 	| IToggleModal
+	| IClearCart

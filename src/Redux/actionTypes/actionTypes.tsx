@@ -6,5 +6,5 @@ export const actionTypeKeys: Record<string, string> = {
 	TOGGLE_MENU: 'TOGGLE_MENU',
 	TOGGLE_CART: 'TOGGLE_CART',
 	TOGGLE_MODAL: 'TOGGLE_MODAL',
-
+	CLEAR_CART: 'CLEAR_CART',
 }

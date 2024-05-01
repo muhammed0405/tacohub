@@ -3,13 +3,15 @@ import { ImSpoonKnife } from 'react-icons/im'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux'
 import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
-import { IImage, IState } from '../../Redux/actionTypes/types'
+import { ITaco, IState } from '../../Redux/actionTypes/types'
 import '../Cart/cart.scss'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Cart = () => {
+	
 	const showCart = useSelector((state: IState) => state.showCart)
 	const dispatch = useDispatch()
-	const handleClick = () => {
+	const handleCartClose = () => {
 		dispatch({ type: actionTypeKeys.TOGGLE_CART })
 	}
 	const [count, setCount] = useState(0)
@@ -20,19 +22,24 @@ const Cart = () => {
 	const discount = subtotal > 200 ? subtotal * 0.01 : 0
 	const totalSum = subtotal - discount
 
-	const handleDecreaseQuantity = (item: IImage) =>
+	const handleDecreaseQuantity = (item: ITaco) =>
 		dispatch({ type: actionTypeKeys.REMOVE_FROM_CART, payload: item })
-	const handleIncreaseQuantity = (item: IImage) =>
+	const handleIncreaseQuantity = (item: ITaco) =>
 		dispatch({ type: actionTypeKeys.ADD_TO_CART, payload: item })
 
+	
+const notify = () => toast("Ваш заказ в пути")
+const handleClearCart = () => {
+	dispatch({ type: actionTypeKeys.CLEAR_CART })
+}
 	return (
 		<div className='cart__node' style={{ display: showCart ? 'flex' : 'none' }}>
-			<div className='left__div' onClick={handleClick} />
+			<div className='left__div' onClick={handleCartClose} />
 			<hr />
 
 			<div className='right__div'>
 				<h1 className='cart__title'>Ваш заказ</h1>
-				<button className='cart__close' onClick={handleClick}>
+				<button className='cart__close' onClick={handleCartClose}>
 					<IoClose />
 				</button>
 				<div className='cart'>
@@ -113,9 +120,22 @@ const Cart = () => {
 				{cartTaco.length === 0 ? (
 					''
 				) : (
-					<div className='cart__banner'>
+					<button onClick={() =>{notify() ,
+					setTimeout(() => {handleClearCart()}, 1000) }} className='cart__banner'>
 						<p>Оформить заказ</p>
-					</div>
+						<Toaster
+								toastOptions={{
+									className: "",
+									style: {
+										background: "aqua",
+										padding: "16px",
+										color: "#000",
+										marginTop:"70px"
+									},
+									duration: 2500,
+								}}
+							/>
+					</button>
 				)}
 			</div>
 		</div>

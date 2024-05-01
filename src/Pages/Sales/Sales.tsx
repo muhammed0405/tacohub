@@ -1,7 +1,7 @@
 /** @format */
 
 import toast, { Toaster } from "react-hot-toast"
-import SalesImg from "../../assets/img/tacoDiscount.png"
+import SalesImg from "../../assets/img/acsya.png"
 import "./Sales.scss"
 export default function Sales() {
 	const notify = () => toast("Промокод добавлен в корзину")
