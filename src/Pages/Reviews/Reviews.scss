@@ -17,6 +17,7 @@
 	}
 
 	&__content {
+		transition: 0.3s ease-in-out;
 		border-radius: 5px;
 		padding: 20px;
 		background-color: white;
@@ -26,5 +27,11 @@
 			color: orange;
 			margin: 10px 0;
 		}
+	}
+
+
+	&__content:hover {
+		transform: scale(1.01) translateX(-10px) translateY(-10px);
+		
 	}
 }
