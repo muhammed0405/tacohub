@@ -2,7 +2,7 @@
 
 @media screen and (max-width: 1000px) {
 	#header {
-		background: #490f56;
+		background: url("../../assets/img/div.header_wrap.png");
 
 		height: 80px;
 		.header {
@@ -88,8 +88,10 @@
 
 @media screen and (min-width: 1000px) {
 	#header {
-		transition: 0.3s ease-in-out;
-		background-color: #490f56;
+		transition: 0.1s ease-in;
+		background: url("../../assets/img/div.header_wrap.png");
+		background-repeat: no-repeat;
+		background-size: cover;
 		width: 100%;
 		position: sticky;
 		top: 0;
@@ -130,11 +132,12 @@
 							font-size: clamp(12px, 2vw, 24px);
 						}
 
-						transition: margin 5s ease-in-out;
+						transition:  0.7s ease-in-out;
 					}
 
 					.header__title__tel--shrunk {
-						display: none;
+						max-height: 0;
+						opacity: 0;
 					}
 
 					.header__nav {
@@ -161,11 +164,12 @@
 					margin: 0 0 20px 30%;
 					color: white;
 					opacity: 1; /* Initially fully visible */
-					transition: margin 5s ease-in-out; /* Transition opacity property */
+					transition:  .7s ease-in-out; /* Transition opacity property */
 				}
 
 				.header__contact--shrunk {
-					display: none;
+					max-height: 0;
+					opacity: 0;
 				}
 
 				.header__auth {

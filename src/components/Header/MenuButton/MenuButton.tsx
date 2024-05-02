@@ -5,8 +5,8 @@ import { IState } from "../../../Redux/actionTypes/types"
 import "./MenuButton.scss"
 
 export default function MenuButton() {
-	const dispatch = useDispatch()
 	const showMenu = useSelector((state: IState) => state.toggleMenu)
+	const dispatch = useDispatch()
 
 	const handleClick = () => {
 		dispatch({ type: actionTypeKeys.TOGGLE_MENU })

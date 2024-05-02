@@ -49,7 +49,7 @@ const Header: React.FC = () => {
 			}}
 		>
 			<div className="container">
-				<div className="header" style={{}}>
+				<div className="header" >
 					<div className="header__div">
 						<div className="header__logo">
 							<img

@@ -4,7 +4,7 @@
  * @format
  */
 
-$purple: rgb(121, 2, 121);
+$purple: #461759;
 $orange: orange;
 $wheat: wheat;
 
@@ -180,7 +180,7 @@ $wheat: wheat;
 	display: none;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1301px) {
 	.products {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -191,7 +191,7 @@ $wheat: wheat;
 	}
 }
 
-@media screen and (max-width: 1300px) and (min-width: 1000px) {
+@media screen and (max-width: 1300px) and (min-width: 1001px) {
 	.products {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -237,7 +237,7 @@ $wheat: wheat;
 						font-size: 20px;
 						border-radius: 5px;
 						transition: 0.2s ease-in-out;
-                        background-color: white;
+						background-color: white;
 					}
 
 					.active-button {

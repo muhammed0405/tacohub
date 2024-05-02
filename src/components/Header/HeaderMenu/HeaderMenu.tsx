@@ -18,7 +18,7 @@ function HeaderMenu() {
 	const notify = () =>
 		toast(
 			<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-				<RiDiscountPercentFill /> в корзине
+				<RiDiscountPercentFill /> активирован
 			</div>
 		)
 

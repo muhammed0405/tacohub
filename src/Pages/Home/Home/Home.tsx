@@ -13,8 +13,8 @@ const TacoGallery: React.FC = () => {
 	const cart = useSelector((state: IState) => state.cart)
 	const showCard = useSelector((state: IState) => state.showModal)
 	const [activeTaco, setActiveTaco] = useState<string | null>(null)
-	const dispatch = useDispatch()
 	const [itemIdToModal, setItemIdToModal] = useState<ITaco>()
+	const dispatch = useDispatch()
 
 	const getQuantity = (id: string) => {
 		const item = cart.find(el => el.id === id)

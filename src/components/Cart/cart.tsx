@@ -17,7 +17,7 @@ const Cart = () => {
 	const dispatch = useDispatch()
 
 	const subtotal = cartTaco.reduce((acc, el) => acc + el.price * el.quantity, 0)
-	const discount = subtotal > 200 ? subtotal * 0.01 : 0
+	const discount = subtotal > 200 ? subtotal * 0.1 : 0
 	const totalSum = subtotal - discount
 
 	const handleCartClose = () => {
@@ -34,7 +34,16 @@ const Cart = () => {
 	const notify = () =>
 		toast(
 			<div>
-				<p style={{ display: "flex", alignItems: "center", gap: "10px" , color: "black" , fontWeight: "bold" , fontSize: "16px"}}>
+				<p
+					style={{
+						display: "flex",
+						alignItems: "center",
+						gap: "10px",
+						color: "black",
+						fontWeight: "bold",
+						fontSize: "16px",
+					}}
+				>
 					Ваш <GiTacos /> в пути
 				</p>
 			</div>
@@ -138,6 +147,7 @@ const Cart = () => {
 							notify(),
 								setTimeout(() => {
 									handleClearCart()
+									setPersonCount(0)
 								}, 1500)
 						}}
 						className="cart__banner"
@@ -147,7 +157,7 @@ const Cart = () => {
 							toastOptions={{
 								className: "",
 								style: {
-									background: "aqua",
+									background: "#84cdee",
 									padding: "16px",
 									marginTop: "130px",
 								},
