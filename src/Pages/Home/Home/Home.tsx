@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import CardModal from "../../../components/CardModal/CardModal"
 import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
-import { IImage, IState, ITaco } from "../../../Redux/actionTypes/types"
+import { IState, ITaco, ITacos } from "../../../Redux/actionTypes/types"
 import "./Home.scss"
 
 const TacoGallery: React.FC = () => {
@@ -14,14 +14,14 @@ const TacoGallery: React.FC = () => {
 	const showCard = useSelector((state: IState) => state.showModal)
 	const [activeTaco, setActiveTaco] = useState<string | null>(null)
 	const dispatch = useDispatch()
-	const [itemIdToModal, setItemIdToModal] = useState<IImage>()
+	const [itemIdToModal, setItemIdToModal] = useState<ITaco>()
 
 	const getQuantity = (id: string) => {
 		const item = cart.find(el => el.id === id)
 		return item ? item.quantity : 0
 	}
 
-	const handleShowCard = (e: IImage) => {
+	const handleShowCard = (e: ITaco) => {
 		setItemIdToModal(e)
 		if (e) {
 			dispatch({
@@ -30,14 +30,14 @@ const TacoGallery: React.FC = () => {
 		}
 	}
 
-	const handleAddToCart = (e: IImage) => {
+	const handleAddToCart = (e: ITaco) => {
 		dispatch({
 			type: actionTypeKeys.ADD_TO_CART,
 			payload: e,
 		})
 	}
 
-	const handleRemoveFromCart = (e: IImage) => {
+	const handleRemoveFromCart = (e: ITaco) => {
 		dispatch({
 			type: actionTypeKeys.REMOVE_FROM_CART,
 			payload: e,
@@ -72,18 +72,17 @@ const TacoGallery: React.FC = () => {
 					</div>
 				</div>
 				<div className="products__content">
-					{tacos.map((taco: ITaco) => (
+					{tacos.map((taco: ITacos) => (
 						<div key={taco.id} id={taco.id} className="products__item">
 							<div className="category__head">
 								<h1>{taco.title}</h1>
 							</div>
 							<div className="products">
-								{taco.tacoCategory.map((item: IImage, index: number) => (
+								{taco.tacoCategory.map((item: ITaco, index: number) => (
 									<div className="product__item__wrap" key={index}>
 										<div className="product__content">
 											<div className="product__img__container">
 												<img
-													fetchPriority="high"
 													rel="preload"
 													src={item.img}
 													alt={`Сүрөт ${index + 1}`}

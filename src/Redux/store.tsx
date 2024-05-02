@@ -1,15 +1,6 @@
-import { createStore } from 'redux'
-import Reducer from './Reducer'
-declare global {
-	interface Window {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		__REDUX_DEVTOOLS_EXTENSION__?: () => any
-	}
-}
+/** @format */
 
-const composeEnhancers =
-	typeof window === 'object' &&
-	window.__REDUX_DEVTOOLS_EXTENSION__ &&
-	window.__REDUX_DEVTOOLS_EXTENSION__()
+import { createStore } from "redux"
+import Reducer from "./Reducer"
 
-export const store = createStore(Reducer, composeEnhancers)
+export const store = createStore(Reducer)
