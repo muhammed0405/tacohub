@@ -20,12 +20,12 @@ export interface ITacos {
 export interface IState {
 	showModal: boolean
 	tacos: ITacos[]
-	toggleMenu: boolean
+	toggleBurgerMenu: boolean
 	showCart: boolean
 	cart: ITaco[]
 }
-interface IToggleMenu {
-	type: typeof actionTypeKeys.TOGGLE_MENU
+interface IToggleBurgerMenu {
+	type: typeof actionTypeKeys.TOGGLE_BURGER_MENU
 }
 
 interface IToggleCart {
@@ -57,7 +57,7 @@ interface IClearCart {
 	type: typeof actionTypeKeys.CLEAR_CART
 }
 export type IAction =
-	| IToggleMenu
+	| IToggleBurgerMenu
 	| IToggleCart
 	| IAddToCart
 	| IRemoveFromCart

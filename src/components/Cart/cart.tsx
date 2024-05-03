@@ -144,11 +144,16 @@ const Cart = () => {
 				) : (
 					<button
 						onClick={() => {
-							notify(),
+							if(totalSum > 950){
+								notify(),
 								setTimeout(() => {
 									handleClearCart()
 									setPersonCount(0)
 								}, 1500)
+							}else{
+								alert("Стоимость заказа должен быть больше чем  ")
+							}
+							
 						}}
 						className="cart__banner"
 					>

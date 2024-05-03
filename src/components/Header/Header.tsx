@@ -102,13 +102,14 @@ const Header: React.FC = () => {
 								</button>
 							</div>
 							<div
-								onClick={() => toggleCart()}
+								
 								className="header__cart"
 								style={{
 									background: cart.length > 0 ? "#ffe271" : "none",
 								}}
 							>
-								<button>
+								<button onClick={toggleCart}	>
+
 									<p
 										style={{
 											color: cart.length > 0 ? "black" : "",

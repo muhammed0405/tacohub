@@ -200,7 +200,6 @@
 
 					button:hover {
 						background: #ffe271;
-
 						p {
 							color: black;
 						}
@@ -211,6 +210,7 @@
 
 					.header__cart {
 						width: 100%;
+
 						.cart__pending {
 							width: 50%;
 						}
@@ -227,6 +227,7 @@
 							align-items: flex-start;
 						}
 					}
+					
 				}
 
 				.header__burger__menu {

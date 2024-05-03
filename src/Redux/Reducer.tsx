@@ -16,7 +16,7 @@ const initialState: IState = {
 
 	tacos: tacosData,
 	cart: [],
-	toggleMenu: false,
+	toggleBurgerMenu: false,
 }
 
 const rootReducer = (state = initialState, action: IAction): IState => {
@@ -70,11 +70,11 @@ const rootReducer = (state = initialState, action: IAction): IState => {
 
 			break
 
-		case actionTypeKeys.TOGGLE_MENU:
+		case actionTypeKeys.TOGGLE_BURGER_MENU:
 			{
 				return {
 					...state,
-					toggleMenu: !state.toggleMenu,
+					toggleBurgerMenu: !state.toggleBurgerMenu,
 				}
 			}
 			break

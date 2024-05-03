@@ -14,7 +14,7 @@ import "./HeaderMenu.scss"
 
 function HeaderMenu() {
 	const dispatch = useDispatch()
-	const showModal = useSelector((state: IState) => state.toggleMenu)
+	const showModal = useSelector((state: IState) => state.toggleBurgerMenu)
 	const notify = () =>
 		toast(
 			<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -24,7 +24,7 @@ function HeaderMenu() {
 
 	const handleMenuToggle = () => {
 		dispatch({
-			type: actionTypeKeys.TOGGLE_MENU,
+			type: actionTypeKeys.TOGGLE_BURGER_MENU,
 		})
 	}
 	return (
