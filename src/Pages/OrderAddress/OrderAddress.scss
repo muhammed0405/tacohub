@@ -5,7 +5,7 @@
 	place-items: center;
 	padding: 5%;
 	background: white;
-	width: 70%;
+	width: 90%;
 	margin: 0 auto;
 
 	.address__info {
@@ -15,10 +15,8 @@
 
 		.address__rules__wrapper {
 			margin-top: 40px;
-
 			display: flex;
 			justify-content: space-between;
-			gap: 0 5%;
 			align-items: start;
 
 			.address__rules__left {
@@ -37,6 +35,22 @@
 				}
 			}
 
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.address{
+		width: 100%;
+
+
+		.address__rules__wrapper{
+			border: 3px solid red;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 40px;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 }

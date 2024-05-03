@@ -24,7 +24,7 @@ export default function Sales() {
 					<hr />
 
 					<div className="sales__info">
-						<img src={SalesImg} alt="" />
+						<img onClick={notify} src={SalesImg} alt="" />
 
 						<button onClick={notify} className="sales__btn__promo">
 							Использовать промокод

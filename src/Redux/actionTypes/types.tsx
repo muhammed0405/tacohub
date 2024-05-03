@@ -32,15 +32,15 @@ interface IToggleCart {
 	type: typeof actionTypeKeys.TOGGLE_CART
 }
 
-interface IAddToCart {
+export interface IAddToCart {
 	type: typeof actionTypeKeys.ADD_TO_CART
 	payload: ITaco
 }
-interface IRemoveFromCart {
+export interface IRemoveFromCart {
 	type: typeof actionTypeKeys.REMOVE_FROM_CART
 	payload: ITaco
 }
-interface IUpdateCartItemPrice {
+export interface IUpdateCartItemPrice {
 	type: typeof actionTypeKeys.UPDATE_CART_ITEM_PRICE
 	payload: ITaco
 }
