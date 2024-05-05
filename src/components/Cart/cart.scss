@@ -8,7 +8,7 @@
 	align-items: center;
 	.left__div {
 		opacity: 0.5;
-		width: 75%;
+		width: 65%;
 		height: 100vh;
 		background: black;
 	}
@@ -33,7 +33,6 @@
 		flex-direction: column;
 		max-height: 200px;
 		overflow-y: auto;
-		overflow-x: hidden;
 		margin-bottom: 50px;
 	}
 
@@ -117,7 +116,7 @@
 	.cart__warn {
 		color: black;
 		width: 70%;
-		height: 20px;
+		min-height: 20px;
 		border-radius: 5px;
 		margin: 0 auto;
 		text-align: center;
@@ -144,7 +143,6 @@
 		transform: scale(0.8);
 	}
 	.count {
-		
 		display: flex;
 		justify-content: space-between;
 		h1 {
@@ -177,7 +175,7 @@
 			display: none;
 		}
 		.right__div {
-			width: 100%;
+			width: 110%;
 			padding: 0 40px;
 
 			.cart__title {

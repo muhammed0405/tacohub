@@ -60,7 +60,6 @@ const Cart = () => {
 	return (
 		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
 			<div className="left__div" onClick={handleCartClose} />
-			<hr />l
 			<div className="right__div">
 				<h1 className="cart__title">Ваш заказ</h1>
 				<button className="cart__close" onClick={handleCartClose}>

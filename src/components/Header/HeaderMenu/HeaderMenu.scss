@@ -64,15 +64,21 @@
 	&__nav {
 		display: flex;
 		align-items: center;
-		gap: 20px;
+		gap: 10px;
 		color: black;
 		margin-left: 10%;
+		flex-wrap: wrap;
+		h2{
+			font-size: clamp(18px , 2.5vw , 24px);
+		}
 
 		a {
 			font-size: medium;
 			text-decoration: none;
+			flex-wrap: wrap;
+
 			color: inherit;
-			transition: color 0.9s ease;
+			transition: color 0.2s ease-in-out;
 
 			&:hover {
 				color: #490f56;
