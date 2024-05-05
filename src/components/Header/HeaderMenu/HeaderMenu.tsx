@@ -6,7 +6,7 @@ import { FiLogIn } from "react-icons/fi"
 import { IoLocationSharp } from "react-icons/io5"
 import { RiDiscountPercentFill } from "react-icons/ri"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { actionTypeKeys } from "../../../Redux/actionTypes/actionTypes"
 import { IState } from "../../../Redux/actionTypes/types"
 import Logo from "../../../assets/img/Logo.svg"
@@ -38,8 +38,10 @@ function HeaderMenu() {
 					className="header__content__menu_gray"
 					onClick={handleMenuToggle}
 				></div>
-				<div className="header__content__menu__logo">
-					<img rel="preload" src={Logo} alt="" />
+				<div onClick={handleMenuToggle} className="header__content__menu__logo">
+					<NavLink to="/">
+						<img rel="preload" src={Logo} alt="" />
+					</NavLink>
 				</div>
 
 				<nav>
@@ -68,8 +70,11 @@ function HeaderMenu() {
 						<Link to="">Войти</Link>
 					</div>
 
-					<div className="header__content__menu__nav">
-						<Link to="">
+					<div
+						onClick={handleMenuToggle}
+						className="header__content__menu__nav"
+					>
+						<Link to="/address">
 							<i>
 								<FaMap />
 							</i>

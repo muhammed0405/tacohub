@@ -215,6 +215,10 @@ $wheat: wheat;
 			align-items: center;
 			gap: 0 10%;
 			overflow: auto;
+			border-radius: 5px;
+			box-shadow: 2px 11px 13px -8px rgba(0, 0, 0, 0.66);
+			-webkit-box-shadow: 2px 11px 13px -8px rgba(0, 0, 0, 0.66);
+			-moz-box-shadow: 2px 11px 13px -8px rgba(0, 0, 0, 0.66);
 
 			.categories__wrap {
 				display: flex;

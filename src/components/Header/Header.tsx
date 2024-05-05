@@ -49,18 +49,20 @@ const Header: React.FC = () => {
 			}}
 		>
 			<div className="container">
-				<div className="header" >
+				<div className="header">
 					<div className="header__div">
 						<div className="header__logo">
-							<img
-								rel="preload"
-								src={Logo}
-								alt=""
-								style={{
-									height: isShrunk ? "50px" : "100px",
-									width: isShrunk ? "50px" : "100px",
-								}}
-							/>
+							<NavLink to={"/"}>
+								<img
+									rel="preload"
+									src={Logo}
+									alt=""
+									style={{
+										height: isShrunk ? "50px" : "100px",
+										width: isShrunk ? "50px" : "100px",
+									}}
+								/>
+							</NavLink>
 						</div>
 						<div className="header__title">
 							<div
@@ -102,14 +104,12 @@ const Header: React.FC = () => {
 								</button>
 							</div>
 							<div
-								
 								className="header__cart"
 								style={{
 									background: cart.length > 0 ? "#ffe271" : "none",
 								}}
 							>
-								<button onClick={toggleCart}	>
-
+								<button onClick={toggleCart}>
 									<p
 										style={{
 											color: cart.length > 0 ? "black" : "",
