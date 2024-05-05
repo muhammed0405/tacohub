@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { GiTacos } from "react-icons/gi"
 import { ImSpoonKnife } from "react-icons/im"
@@ -14,6 +14,7 @@ const Cart = () => {
 	const showCart = useSelector((state: IState) => state.showCart)
 	const cartTaco = useSelector((state: IState) => state.cart)
 	const [personCount, setPersonCount] = useState(0)
+	const [isCostEnough, setIsCostEnough] = useState<boolean>(false)
 	const dispatch = useDispatch()
 
 	const subtotal = cartTaco.reduce((acc, el) => acc + el.price * el.quantity, 0)
@@ -31,6 +32,14 @@ const Cart = () => {
 	const handleClearCart = () => {
 		dispatch({ type: actionTypeKeys.CLEAR_CART })
 	}
+
+	useEffect(() => {
+		if (totalSum > 950) {
+			setIsCostEnough(false)
+		} else {
+			setIsCostEnough(true)
+		}
+	}, [totalSum])
 	const notify = () =>
 		toast(
 			<div>
@@ -51,8 +60,7 @@ const Cart = () => {
 	return (
 		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
 			<div className="left__div" onClick={handleCartClose} />
-			<hr />
-
+			<hr />l
 			<div className="right__div">
 				<h1 className="cart__title">Ваш заказ</h1>
 				<button className="cart__close" onClick={handleCartClose}>
@@ -139,21 +147,24 @@ const Cart = () => {
 					</div>
 				</div>
 
+				{isCostEnough && cartTaco.length > 0 && (
+					<p className="cart__warn">
+						{950 - totalSum}р. до минимальной суммы заказа (950.)
+					</p>
+				)}
 				{cartTaco.length === 0 ? (
 					""
 				) : (
 					<button
 						onClick={() => {
-							if(totalSum > 950){
+							if (totalSum > 950) {
 								notify(),
-								setTimeout(() => {
-									handleClearCart()
-									setPersonCount(0)
-								}, 1500)
-							}else{
-								alert("Стоимость заказа должен быть больше чем  ")
+									setTimeout(() => {
+										handleClearCart()
+										setPersonCount(0)
+									}, 1500)
+								setIsCostEnough(false)
 							}
-							
 						}}
 						className="cart__banner"
 					>
