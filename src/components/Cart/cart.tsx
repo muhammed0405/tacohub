@@ -1,14 +1,14 @@
 /** @format */
 
-import { useEffect, useState } from "react"
-import toast, { Toaster } from "react-hot-toast"
-import { GiTacos } from "react-icons/gi"
-import { ImSpoonKnife } from "react-icons/im"
-import { IoClose } from "react-icons/io5"
-import { useDispatch, useSelector } from "react-redux"
-import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
-import { IState, ITaco } from "../../Redux/actionTypes/types"
-import "../Cart/cart.scss"
+import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import { GiTacos } from 'react-icons/gi'
+import { ImSpoonKnife } from 'react-icons/im'
+import { IoClose } from 'react-icons/io5'
+import { useDispatch, useSelector } from 'react-redux'
+import { actionTypeKeys } from '../../Redux/actionTypes/actionTypes'
+import { IState, ITaco } from '../../Redux/actionTypes/types'
+import '../Cart/cart.scss'
 
 const Cart = () => {
 	const showCart = useSelector((state: IState) => state.showCart)
@@ -45,12 +45,12 @@ const Cart = () => {
 			<div>
 				<p
 					style={{
-						display: "flex",
-						alignItems: "center",
-						gap: "10px",
-						color: "black",
-						fontWeight: "bold",
-						fontSize: "16px",
+						display: 'flex',
+						alignItems: 'center',
+						gap: '10px',
+						color: 'black',
+						fontWeight: 'bold',
+						fontSize: '16px',
 					}}
 				>
 					Ваш <GiTacos /> в пути
@@ -58,33 +58,33 @@ const Cart = () => {
 			</div>
 		)
 	return (
-		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
-			<div className="left__div" onClick={handleCartClose} />
-			<div className="right__div">
-				<h1 className="cart__title">Ваш заказ</h1>
-				<button className="cart__close" onClick={handleCartClose}>
+		<div className='cart__node' style={{ display: showCart ? 'flex' : 'none' }}>
+			<div className='left__div' onClick={handleCartClose} />
+			<div className='right__div'>
+				<h1 className='cart__title'>Ваш заказ</h1>
+				<button className='cart__close' onClick={handleCartClose}>
 					<IoClose />
 				</button>
-				<div className="cart">
+				<div className='cart'>
 					{cartTaco.length > 0 &&
-						cartTaco.map(item => (
-							<div key={item.id} className="cart__container">
-								<div className="cart__img">
-									<img src={item.img} alt={item.title || "Taco Image"} />
+						cartTaco.map((item) => (
+							<div key={item.id} className='cart__container'>
+								<div className='cart__img'>
+									<img src={item.img} alt={item.title || 'Taco Image'} />
 									<h1>{item.title}</h1>
 								</div>
-								<div className="cart__count">
+								<div className='cart__count'>
 									<p>{item.price * item.quantity} рубль</p>
-									<div className="cart__btns">
+									<div className='cart__btns'>
 										<button
-											className="cart__btn"
+											className='cart__btn'
 											onClick={() => handleDecreaseQuantity(item)}
 										>
 											-
 										</button>
 										<p>{item.quantity}</p>
 										<button
-											className="cart__btn"
+											className='cart__btn'
 											onClick={() => handleIncreaseQuantity(item)}
 										>
 											+
@@ -96,15 +96,15 @@ const Cart = () => {
 					<hr />
 				</div>
 
-				<div className="cart__summary">
-					<div className="count">
-						<div className="cart__img">
+				<div className='cart__summary'>
+					<div className='count'>
+						<div className='cart__img'>
 							<span>{<ImSpoonKnife />}</span>
 							<p>количество персон</p>
 						</div>
-						<div className="cart__btns">
+						<div className='cart__btns'>
 							<button
-								className="cart__btn"
+								className='cart__btn'
 								onClick={() =>
 									setPersonCount(
 										personCount > 0 ? personCount - 1 : personCount
@@ -116,7 +116,7 @@ const Cart = () => {
 							<h1>{personCount}</h1>
 
 							<button
-								className="cart__btn"
+								className='cart__btn'
 								onClick={() => setPersonCount(personCount + 1)}
 							>
 								+
@@ -125,21 +125,21 @@ const Cart = () => {
 					</div>
 					<hr />
 
-					<div className="cart_cost">
-						<div className="discount">
+					<div className='cart_cost'>
+						<div className='discount'>
 							<span>Стоимость</span> {subtotal} рубль
 						</div>
-						<div className="discount">
+						<div className='discount'>
 							<span>Доставка</span>
 							<span>бесплатно</span>
 						</div>
 						{discount > 0 && (
-							<div className="discount">
+							<div className='discount'>
 								<p>Скидка:</p>
 								<p> -{discount.toFixed(0)} рубль</p>
 							</div>
 						)}
-						<div className="discount">
+						<div className='discount'>
 							<span>Итого стоимость:</span>
 							<span> {totalSum.toFixed(0)} рубль</span>
 						</div>
@@ -147,12 +147,12 @@ const Cart = () => {
 				</div>
 
 				{isCostEnough && cartTaco.length > 0 && (
-					<p className="cart__warn">
-						{950 - totalSum}р. до минимальной суммы заказа (950.)
+					<p className='cart__warn'>
+						{Math.trunc(950 - totalSum)}р. до минимальной суммы заказа (950.)
 					</p>
 				)}
 				{cartTaco.length === 0 ? (
-					""
+					''
 				) : (
 					<button
 						onClick={() => {
@@ -165,16 +165,16 @@ const Cart = () => {
 								setIsCostEnough(false)
 							}
 						}}
-						className="cart__banner"
+						className='cart__banner'
 					>
 						<p>Оформить заказ</p>
 						<Toaster
 							toastOptions={{
-								className: "",
+								className: '',
 								style: {
-									background: "#84cdee",
-									padding: "16px",
-									marginTop: "130px",
+									background: '#84cdee',
+									padding: '16px',
+									marginTop: '130px',
 								},
 								duration: 1000,
 							}}
