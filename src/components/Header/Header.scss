@@ -45,6 +45,10 @@
 				display: none;
 			}
 
+			.header__contact--shrunk {
+				display: none;
+			}
+
 			.header__auth {
 				.header__logIn {
 					display: flex;
@@ -132,7 +136,7 @@
 							font-size: clamp(12px, 2vw, 24px);
 						}
 
-						transition:  0.7s ease-in-out;
+						transition: 0.7s ease-in-out;
 					}
 
 					.header__title__tel--shrunk {
@@ -227,7 +231,6 @@
 							align-items: flex-start;
 						}
 					}
-					
 				}
 
 				.header__burger__menu {
