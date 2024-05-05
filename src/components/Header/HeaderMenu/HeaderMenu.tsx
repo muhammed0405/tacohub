@@ -75,7 +75,7 @@ function HeaderMenu() {
 							</i>
 						</Link>
 
-						<Link to="">Карта доставки</Link>
+						<Link to="/address">Карта доставки</Link>
 					</div>
 
 					<div className="header__content__menu__nav">
