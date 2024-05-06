@@ -49,6 +49,10 @@ const TacoGallery: React.FC = () => {
 			type: actionTypeKeys.TOGGLE_CART,
 		})
 	}
+
+	const totalSum = cart.reduce((acc: number, item: ITaco) => {
+		return acc + item.price * item.quantity
+	}, 0)
 	return (
 		<div className="container">
 			<div className="menu">
@@ -144,6 +148,7 @@ const TacoGallery: React.FC = () => {
 			>
 				<FaShoppingCart /> В корзинy{" "}
 				{itemIdToModal && getQuantity(itemIdToModal!.id)}
+				{totalSum > 0 && <h5>{(totalSum - totalSum * 0.1).toFixed(0)} руб.</h5>}
 			</div>
 			{showCard && <CardModal taco={itemIdToModal!} />}
 		</div>

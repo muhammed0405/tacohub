@@ -4,11 +4,13 @@
 	display: flex;
 	position: fixed;
 	width: 100%;
+	right: 0;
+	left: 0;
 	z-index: 10;
 	align-items: center;
 	.left__div {
 		opacity: 0.5;
-		width: 65%;
+		width: 100%;
 		height: 100vh;
 		background: black;
 	}
@@ -17,7 +19,9 @@
 		margin-right: 0;
 		background-color: white;
 		height: 100vh;
+
 		width: 500px;
+		padding: 20px;
 		.cart__title {
 			font-size: 24px;
 			font-weight: 600;
@@ -140,7 +144,8 @@
 	}
 
 	.cart__banner:active {
-		transform: scale(0.8);
+		background: #31113e;
+		
 	}
 	.count {
 		display: flex;
@@ -167,7 +172,10 @@
 @media screen and (max-width: 1000px) {
 	.cart__node {
 		overflow: scroll;
+		overflow-x: hidden;
 		height: 100vh;
+		padding: 150px 0 170px 0  ;
+		background-color: white;
 		position: fixed;
 		top: 0;
 		z-index: 1000;
@@ -176,7 +184,7 @@
 		}
 		.right__div {
 			width: 110%;
-			padding: 0 40px;
+			padding: 0   40px;
 
 			.cart__title {
 				font-size: 24px;
@@ -195,6 +203,30 @@
 				background: none;
 			}
 
+			.cart_cost{
+				padding: 0 ;
+			}
+
+			.cart__banner {
+				width: 100%;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				height: 60px;
+				p{
+					font-size: 20px;
+				}
+			}
+
+			.cart__warn{
+				width: 100%;
+				position: fixed;
+				bottom: 60px;
+				left: 0;
+				height: 40px;
+				display: grid;
+				place-items: center;
+			}
 			.cart {
 				display: flex;
 				flex-direction: column;
@@ -203,6 +235,14 @@
 				overflow-x: hidden;
 				.cart__container {
 					width: 100%;
+
+					.cart__banner {
+						width: 100%;
+						position: fixed;
+						bottom: 0;
+						left: 0;
+						height: 80px;
+					}
 				}
 			}
 		}

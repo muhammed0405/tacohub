@@ -213,7 +213,6 @@ $wheat: wheat;
 			z-index: 1;
 			display: flex;
 			align-items: center;
-			gap: 0 10%;
 			overflow: auto;
 			border-radius: 5px;
 			box-shadow: 2px 11px 13px -8px rgba(0, 0, 0, 0.66);
@@ -231,7 +230,7 @@ $wheat: wheat;
 				}
 
 				.left__menu__category {
-					padding: 6px 20px 5px 20px;
+					padding: 6px 5px 5px 5px;
 					height: 35px;
 					height: 40px;
 
@@ -371,10 +370,15 @@ $wheat: wheat;
 		}
 	}
 
+	html{
+		scroll-padding-bottom: 100px !important;
+	}
 	.order {
 		width: 100%;
 		font-size: 30px;
 		color: white;
+		display: flex !important;
+		justify-content: space-around;
 		height: 100px;
 		background-color: $purple;
 		position: fixed;
@@ -386,6 +390,7 @@ $wheat: wheat;
 		transition: opacity 0.5s ease-in-out;
 		border: none;
 		cursor: pointer;
+		z-index: 10;
 
 		&:hover {
 			opacity: 0.8;
