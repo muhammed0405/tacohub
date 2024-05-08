@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home/Home"
 import Reviews from "./Pages/Reviews/Reviews"
 import Sales from "./Pages/Sales/Sales"
 import { OrderAddress } from "./Pages/OrderAddress/OrderAddress"
+import { OrderPage } from "./Pages/OrderPage/OrderPage"
 
 function App() {
 	return (
@@ -20,8 +21,9 @@ function App() {
 				<Route path="/sales" element={<Sales />} />
 				<Route path="/reviews" element={<Reviews />} />
 				<Route path="/address" element={<OrderAddress/>} />
-
+				<Route path="/order" element={<OrderPage/>} />
 			</Routes>
+			
 			<Footer />
 		</>
 	)
