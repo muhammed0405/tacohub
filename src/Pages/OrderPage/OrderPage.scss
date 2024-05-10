@@ -1,15 +1,83 @@
-#sheetdb-form{
+/** @format */
+
+.orders {
+	background-color: white;
 	display: flex;
-	flex-direction: column;
+	width: 90%;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
 
+	#sheetdb-form {
+		background-color: white;
 
-	.house__details{
 		display: flex;
-		margin: 20px 0;
-		flex-wrap: wrap;
-	}
+		flex-direction: column;
 
-	.order_comment{
+		input {
+			width: 100%;
+			font-size: 1rem;
+			line-height: 1.8rem;
+			border: 0;
+			outline: none;
+			letter-spacing: inherit;
+			background-size: 20px 20px;
+			border-bottom: 1px solid #dcdcdc;
+			box-sizing: content-box;
+		}
+		input:active,
+		input:focus {
+			border-bottom: 1px solid grey;
+		}
+
+		.order__head__inputs {
+			margin-top: 30px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+		.house__details {
+			display: flex;
+			margin: 20px 0;
+			flex-wrap: wrap;
+
+			gap: 20px;
+
+			input {
+				width: 100px;
+			}
+		}
+
+		.order__comment {
+		}
+
+		.order__date {
+			margin-top: 40px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+
+			.order__date__selection {
+				display: flex;
+				gap: 20px 40px;
+			}
+		}
+
+		.order__payment__type{
+			margin: 40px 0 ;
+		}
+
+		.submitbtn {
+			width: 200px;
+			height: 40px;
+			border: none;
+			margin: 0 auto;
+			color: white;
+			font-size: 20px;
+			
+			background: #490f56;
+			border-radius: 10px;
+		}
 
 	}
 }

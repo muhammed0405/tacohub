@@ -2,117 +2,169 @@
 
 import axios from "axios"
 import { FormEvent, useEffect, useState } from "react"
+import InputMask from "react-input-mask"
+import OrderCart from "../../components/OrderCart/OrderCart"
 import "./OrderPage.scss"
 
 export function OrderPage() {
-	const [dateOptions, setDateOptions] = useState<string[]>([])
+	const [dateOptions, setDateOptions] = useState<
+		{ label: string; value: string }[]
+	>([])
+	const [tacosData, setTacosData] = useState<string[]>([])
+
+	console.log("tacosData", tacosData)
 
 	useEffect(() => {
-		const today = new Date("2024-04-13T00:00:00")
-		const options = ["today"] 
+		const today = new Date()
+		const options = [{ label: "Сегодня", value: formatDate(today) }]
 
 		for (let i = 1; i <= 7; i++) {
 			const nextDay = new Date(today)
 			nextDay.setDate(today.getDate() + i)
-			const day = nextDay.getDate().toString().padStart(2, "0")
-			const month = (nextDay.getMonth() + 1).toString().padStart(2, "0")
-			const year = nextDay.getFullYear()
-			options.push(`${day}.${month}.${year}`)
+			options.push({ label: formatDate(nextDay), value: formatDate(nextDay) })
 		}
 
 		setDateOptions(options)
 	}, [])
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const formatDate = (date: Date) => {
+		const day = date.getDate().toString().padStart(2, "0")
+		const month = (date.getMonth() + 1).toString().padStart(2, "0")
+		const year = date.getFullYear()
+		return `${day}.${month}.${year}`
+	}
+
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		const form = e.currentTarget
-		axios
-			.post(form.action, new FormData(form))
-			.then(() => {
-				window.open("page2.html", "_blank")
+
+		// Create an instance of FormData from the form
+		const formData = new FormData(form)
+
+		try {
+			// Post the form data to the server
+			const response = await axios({
+				method: "post",
+				url: form.action,
+				data: formData,
+				headers: { "Content-Type": "multipart/form-data" },
 			})
-			.catch(error => {
-				console.error("Error!", error.message)
-			})
+
+			console.log("Form submitted successfully:", response.data)
+			// Redirect or handle the successful submission
+		} catch (error) {
+			console.error("Error submitting form:", error)
+			// Handle the error, e.g., show an error message to the user
+		}
 	}
 
 	return (
 		<div className="container">
-			<h1>Форма заказа</h1>
-			<form
-				action="https://sheetdb.io/api/v1/mhprlykneyavm"
-				method="post"
-				id="sheetdb-form"
-				onSubmit={handleSubmit}
-			>
-				<input type="number" name="data[number]" placeholder="Номер" required />{" "}
-				<input type="text" name="data[address]" placeholder="Адресс" required />
-				<div className="house__details">
-					<div>
-						{" "}
-						<p>Квартира*</p>
-						<input
-							type="number"
-							name="data[flat]"
-							placeholder="Квартира"
+			<div className="orders">
+				<OrderCart setTacosData={setTacosData} />
+				<div className="orders_wrap">
+					<h1>Форма заказа</h1>
+					<form
+						action="https://sheetdb.io/api/v1/mhprlykneyavm"
+						method="post"
+						id="sheetdb-form"
+						onSubmit={handleSubmit}
+					>
+						<InputMask
+							name="data[number]"
+							mask="'+7(999) 999-99-99"
+							type="tel"
+							placeholder="'+7(999) 999-99-99"
 							required
 						/>
-					</div>{" "}
-					<div>
-						<p>Подьезд*</p>{" "}
 						<input
-							type="number"
-							name="data[entrance]"
-							placeholder="Подьезд"
+							type="text"
+							name="data[address]"
+							placeholder="Адрес"
 							required
-						/>{" "}
-					</div>
-					<p>Домофон</p>{" "}
-					<input
-						type="number"
-						name="data[intercom]"
-						placeholder="Домофон"
-						required
-					/>{" "}
-					<p>Этаж</p>
-					<input
-						type="number"
-						name="data[floor]"
-						placeholder="Этаж"
-						required
-					/>{" "}
+						/>
+						<div className="house__details">
+							<div>
+								<p>Квартира*</p>
+								<input
+									type="number"
+									name="data[flat]"
+									placeholder="Квартира"
+									required
+								/>
+							</div>{" "}
+							<div>
+								<p>Подъезд*</p>{" "}
+								<input
+									type="number"
+									name="data[entrance]"
+									placeholder="Подъезд"
+									required
+								/>
+							</div>
+							<div>
+								<p>Домофон</p>{" "}
+								<input
+									type="number"
+									name="data[intercom]"
+									placeholder="Домофон"
+								/>{" "}
+							</div>
+							<div>
+								<p>Этаж</p>
+								<input type="number" name="data[floor]" placeholder="Этаж" />
+							</div>
+						</div>
+						<div className="order__comment">
+							<p>Комментарий к заказу</p>{" "}
+							<textarea
+								name="data[comment]"
+								placeholder="Комментарий"
+								rows={3}
+								required
+							></textarea>
+							<input
+								type="hidden"
+								name="data[tacos]"
+								value={tacosData.map(el => el).join(", ")}
+								required
+							/>
+						</div>
+						<div className="order__date">
+							<h2>Доставка</h2>
+							<p>Доступен только предварительный заказ с 10:30</p>
+							<p>К времени</p>
+							<select name="data[date]" required>
+								{dateOptions.map((option, index) => (
+									<option key={index} value={option.value}>
+										{option.label}
+									</option>
+								))}
+							</select>
+							<input
+								type="time"
+								name="data[time]"
+								placeholder="Время"
+								required
+							/>
+						</div>
+
+						<select
+							className="order__payment__type"
+							name="data[payment]"
+							required
+						>
+							<option value="">Выберите способ оплаты</option>
+							<option value="card">Картой</option>
+							<option value="cash">Наличными</option>
+						</select>
+
+						<button type="submit" className="submitbtn">
+							Отправить заказ
+						</button>
+					</form>
 				</div>
-				<div className="order_comment">
-					<p>Кометарий к заказу</p>{" "}
-					<textarea
-						name="data[comment]"
-						placeholder="коментарий"
-						rows={3}
-						required
-					></textarea>
-				</div>
-				<div className="order_date">
-					<h2>Доставка</h2>
-					<p>Доступен только предварительный заказ с 10:30</p>
-					<p>Ко времени</p>
-					<select name="data[date]" required>
-						{dateOptions.map((date, index) => (
-							<option key={index} value={date}>
-								{date === "today" ? "Сегодня" : date}
-							</option>
-						))}
-					</select>
-					<input type="time" name="data[time]" placeholder="Время" required />
-				</div>
-				<select name="data[payment]" required>
-					<option value="">Выберите способ оплаты</option>
-					<option value="card">Картой</option>
-					<option value="cash">Наличными</option>
-				</select>
-				<button type="submit" className="submitbtn">
-					Submit Order
-				</button>
-			</form>
+			</div>
 		</div>
 	)
 }

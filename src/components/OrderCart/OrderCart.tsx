@@ -9,10 +9,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
 import { IState, ITaco } from "../../Redux/actionTypes/types"
-import "../Cart/cart.scss"
+import "./OrderCart.scss"
 
-const Cart = () => {
-	const showCart = useSelector((state: IState) => state.showCart)
+interface IProps {
+	setTacosData: (data: string[]) => void
+}
+const OrderCart = ({ setTacosData }: IProps) => {
 	const cartTaco = useSelector((state: IState) => state.cart)
 	const [personCount, setPersonCount] = useState(0)
 	const [isCostEnough, setIsCostEnough] = useState<boolean>(false)
@@ -31,37 +33,17 @@ const Cart = () => {
 	const handleIncreaseQuantity = (item: ITaco) =>
 		dispatch({ type: actionTypeKeys.ADD_TO_CART, payload: item })
 
-	// const handleClearCart = () => {
-	// 	dispatch({ type: actionTypeKeys.CLEAR_CART })
-	// }
-
 	useEffect(() => {
 		if (totalSum > 950) {
 			setIsCostEnough(false)
+			setTacosData(cartTaco.map(item => item.title))
 		} else {
 			setIsCostEnough(true)
 		}
 	}, [totalSum])
-	// const notify = () =>
-	// 	toast(
-	// 		<div>
-	// 			<p
-	// 				style={{
-	// 					display: 'flex',
-	// 					alignItems: 'center',
-	// 					gap: '10px',
-	// 					color: 'black',
-	// 					fontWeight: 'bold',
-	// 					fontSize: '16px',
-	// 				}}
-	// 			>
-	// 				Ваш <GiTacos /> в пути
-	// 			</p>
-	// 		</div>
-	// 	)
+
 	return (
-		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
-			<div className="left__div" onClick={handleCartClose} />
+		<div className="cart__node_order">
 			<div className="right__div">
 				<h1 className="cart__title">Ваш заказ</h1>
 				<button className="cart__close" onClick={handleCartClose}>
@@ -183,4 +165,4 @@ const Cart = () => {
 	)
 }
 
-export default Cart
+export default OrderCart
