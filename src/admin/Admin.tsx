@@ -6,8 +6,7 @@ import { FC, useEffect, useState } from "react"
 interface AdminProps {}
 
 const Admin: FC<AdminProps> = () => {
-	const [data, setData] = useState<any[]>([]) // Use 'any' or define a specific type for the data
-
+	const [data, setData] = useState<any[]>([])
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
