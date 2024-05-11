@@ -94,7 +94,7 @@ const rootReducer = (state = initialState, action: IAction): IState => {
 				...state,
 				showCart: !state.showCart,
 			}
-		}
+		}z
 
 		default:
 			return state

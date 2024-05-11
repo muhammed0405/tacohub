@@ -10,6 +10,7 @@ import Reviews from "./Pages/Reviews/Reviews"
 import Sales from "./Pages/Sales/Sales"
 import { OrderAddress } from "./Pages/OrderAddress/OrderAddress"
 import { OrderPage } from "./Pages/OrderPage/OrderPage"
+import Admin from "./admin/Admin"
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 				<Route path="/reviews" element={<Reviews />} />
 				<Route path="/address" element={<OrderAddress/>} />
 				<Route path="/order" element={<OrderPage/>} />
+				<Route path="/admin" element={<Admin/>} />
 			</Routes>
 			
 			<Footer />

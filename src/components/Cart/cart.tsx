@@ -160,6 +160,7 @@ const Cart = () => {
 						onClick={() => {
 							if (totalSum > 950) {
 								navigate("/order")
+								handleCartClose()
 							}
 						}}
 						className="cart__banner"
