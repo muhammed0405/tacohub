@@ -15,7 +15,7 @@ import MenuButton from "./MenuButton/MenuButton"
 const Header: React.FC = () => {
 	const [isShrunk, setIsShrunk] = useState<boolean>(false)
 	const [isPending, setIsPending] = useState<boolean>(false)
-	const [isItMobile , setIsItMobile] = useState<boolean>(false)
+	const [isItMobile, setIsItMobile] = useState<boolean>(false)
 	const cart = useSelector((state: IState) => state.cart)
 	const dispatch = useDispatch()
 	const toggleCart = () => {
@@ -43,7 +43,6 @@ const Header: React.FC = () => {
 			window.removeEventListener("scroll", handleScroll)
 		}
 	}, [])
-
 
 	return (
 		<div
@@ -83,6 +82,7 @@ const Header: React.FC = () => {
 								<NavLink to={"/sales"}>Акции</NavLink>
 								<NavLink to={"/address"}>О доставке</NavLink>
 								<NavLink to={"/reviews"}>Отзывы</NavLink>
+								<NavLink to={"/admin"}>Admin</NavLink>
 								<span>
 									<NavLink to={"/address"}>г Ош, ул Масалиева</NavLink>
 								</span>
@@ -98,10 +98,13 @@ const Header: React.FC = () => {
 							<h2>+79773230449</h2>
 						</div>
 						<div className="header__auth">
-							<div className="header__logIn" style={{
-								transform: isItMobile && isShrunk ? "scale(0.8)" : "",
-								marginTop: isItMobile && isShrunk ? "-13px" : '' 
-							}}>
+							<div
+								className="header__logIn"
+								style={{
+									transform: isItMobile && isShrunk ? "scale(0.8)" : "",
+									marginTop: isItMobile && isShrunk ? "-13px" : "",
+								}}
+							>
 								<button>
 									{" "}
 									<p className="header__logIn__icon">
