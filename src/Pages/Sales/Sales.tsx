@@ -1,18 +1,20 @@
 /** @format */
 
 import toast, { Toaster } from "react-hot-toast"
+import { RiDiscountPercentFill } from "react-icons/ri"
 import SalesImg from "../../assets/img/acsya.png"
 import "./Sales.scss"
-import { RiDiscountPercentFill } from "react-icons/ri"
 export default function Sales() {
 	const notify = () =>
 		toast(
-			<p style={{
-				display: "flex",
-				alignItems: "center",
-				gap:`10px`,
-				fontSize: "16px",
-			}}>
+			<p
+				style={{
+					display: "flex",
+					alignItems: "center",
+					gap: `10px`,
+					fontSize: "16px",
+				}}
+			>
 				<RiDiscountPercentFill /> активирован
 			</p>
 		)

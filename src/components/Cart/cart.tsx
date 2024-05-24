@@ -42,23 +42,7 @@ const Cart = () => {
 			setIsCostEnough(true)
 		}
 	}, [totalSum])
-	// const notify = () =>
-	// 	toast(
-	// 		<div>
-	// 			<p
-	// 				style={{
-	// 					display: 'flex',
-	// 					alignItems: 'center',
-	// 					gap: '10px',
-	// 					color: 'black',
-	// 					fontWeight: 'bold',
-	// 					fontSize: '16px',
-	// 				}}
-	// 			>
-	// 				Ваш <GiTacos /> в пути
-	// 			</p>
-	// 		</div>
-	// 	)
+	
 	return (
 		<div className="cart__node" style={{ display: showCart ? "flex" : "none" }}>
 			<div className="left__div" onClick={handleCartClose} />

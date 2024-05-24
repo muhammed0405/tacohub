@@ -1,12 +1,10 @@
 /** @format */
 
 import { useEffect, useState } from "react"
-import { Toaster } from "react-hot-toast"
 // import { GiTacos } from 'react-icons/gi'
 import { ImSpoonKnife } from "react-icons/im"
 import { IoClose } from "react-icons/io5"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
 import { IState, ITaco } from "../../Redux/actionTypes/types"
 import "./OrderCart.scss"
@@ -19,7 +17,6 @@ const OrderCart = ({ setTacosData }: IProps) => {
 	const [personCount, setPersonCount] = useState(0)
 	const [isCostEnough, setIsCostEnough] = useState<boolean>(false)
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
 
 	const subtotal = cartTaco.reduce((acc, el) => acc + el.price * el.quantity, 0)
 	const discount = subtotal > 200 ? subtotal * 0.1 : 0
@@ -134,31 +131,6 @@ const OrderCart = ({ setTacosData }: IProps) => {
 					<p className="cart__warn">
 						{Math.trunc(950 - totalSum)}р. до минимальной суммы заказа (950.)
 					</p>
-				)}
-				{cartTaco.length === 0 ? (
-					""
-				) : (
-					<button
-						onClick={() => {
-							if (totalSum > 950) {
-								navigate("/order")
-							}
-						}}
-						className="cart__banner"
-					>
-						<p>Оформить заказ</p>
-						<Toaster
-							toastOptions={{
-								className: "",
-								style: {
-									background: "#84cdee",
-									padding: "16px",
-									marginTop: "130px",
-								},
-								duration: 1000,
-							}}
-						/>
-					</button>
 				)}
 			</div>
 		</div>

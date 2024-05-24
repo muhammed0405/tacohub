@@ -6,7 +6,7 @@
 	width: 90%;
 	justify-content: center;
 	align-items: center;
-	padding-top: 50px;
+	padding: 50px 10px 0;
 
 	#sheetdb-form {
 		background-color: white;
@@ -24,6 +24,7 @@
 			background-size: 20px 20px;
 			border-bottom: 1px solid #dcdcdc;
 			box-sizing: content-box;
+			margin-bottom: 30px;
 		}
 		input:active,
 		input:focus {
@@ -49,6 +50,10 @@
 		}
 
 		.order__comment {
+			input{
+				margin-top: 10px;
+				max-height: 100px;
+			}
 		}
 
 		.order__date {
@@ -62,9 +67,13 @@
 				gap: 20px 40px;
 			}
 		}
-
-		.order__payment__type{
-			margin: 40px 0 ;
+		select {
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+		.order__payment__type {
+			margin: 40px 0;
 		}
 
 		.submitbtn {
@@ -74,10 +83,9 @@
 			margin: 0 auto;
 			color: white;
 			font-size: 20px;
-			
+
 			background: #490f56;
 			border-radius: 10px;
 		}
-
 	}
 }

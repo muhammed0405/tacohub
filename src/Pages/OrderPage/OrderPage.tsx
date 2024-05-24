@@ -2,6 +2,7 @@
 
 import axios from "axios"
 import { FormEvent, useEffect, useState } from "react"
+import toast, { Toaster } from "react-hot-toast"
 import InputMask from "react-input-mask"
 import OrderCart from "../../components/OrderCart/OrderCart"
 import "./OrderPage.scss"
@@ -57,6 +58,18 @@ export function OrderPage() {
 			// Handle the error, e.g., show an error message to the user
 		}
 	}
+
+	const notify = () => toast("Successfully submitted the form!")
+	// <p
+	// 	style={{
+	// 		display: "flex",
+	// 		alignItems: "center",
+	// 		gap: `10px`,
+	// 		fontSize: "16px",
+	// 	}}
+	// >
+	// 	<GiTacos /> ваш заказ принят!
+	// </p>
 
 	return (
 		<div className="container">
@@ -117,12 +130,11 @@ export function OrderPage() {
 						</div>
 						<div className="order__comment">
 							<p>Комментарий к заказу</p>{" "}
-							<textarea
+							<input
 								name="data[comment]"
 								placeholder="Комментарий"
-								rows={3}
 								required
-							></textarea>
+							></input>
 							<input
 								type="hidden"
 								name="data[tacos]"
@@ -141,6 +153,8 @@ export function OrderPage() {
 									</option>
 								))}
 							</select>
+
+							<p>Время</p>
 							<input
 								type="time"
 								name="data[time]"
@@ -159,10 +173,22 @@ export function OrderPage() {
 							<option value="cash">Наличными</option>
 						</select>
 
-						<button type="submit" className="submitbtn">
+						<button onClick={notify} type="submit" className="submitbtn">
 							Отправить заказ
 						</button>
 					</form>
+
+					<Toaster
+						toastOptions={{
+							className: "",
+							style: {
+								background: "red",
+								padding: "16px",
+								marginTop: "30",
+							},
+							duration: 1000,
+						}}
+					/>
 				</div>
 			</div>
 		</div>
