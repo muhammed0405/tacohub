@@ -55,7 +55,7 @@ const OrderCart = ({ setTacosData }: IProps) => {
 									<h1>{item.title}</h1>
 								</div>
 								<div className="cart__count">
-									<p>{item.price * item.quantity} рубль</p>
+									<p>{item.price * item.quantity} сом</p>
 									<div className="cart__btns">
 										<button
 											className="cart__btn"
@@ -108,7 +108,7 @@ const OrderCart = ({ setTacosData }: IProps) => {
 
 					<div className="cart_cost">
 						<div className="discount">
-							<span>Стоимость</span> {subtotal} рубль
+							<span>Стоимость</span> {subtotal} сом
 						</div>
 						<div className="discount">
 							<span>Доставка</span>
@@ -117,12 +117,12 @@ const OrderCart = ({ setTacosData }: IProps) => {
 						{discount > 0 && (
 							<div className="discount">
 								<p>Скидка:</p>
-								<p> -{discount.toFixed(0)} рубль</p>
+								<p> -{discount.toFixed(0)} сом</p>
 							</div>
 						)}
 						<div className="discount">
 							<span>Итого стоимость:</span>
-							<span> {totalSum.toFixed(0)} рубль</span>
+							<span> {totalSum.toFixed(0)} сом</span>
 						</div>
 					</div>
 				</div>

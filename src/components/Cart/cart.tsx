@@ -31,9 +31,7 @@ const Cart = () => {
 	const handleIncreaseQuantity = (item: ITaco) =>
 		dispatch({ type: actionTypeKeys.ADD_TO_CART, payload: item })
 
-	// const handleClearCart = () => {
-	// 	dispatch({ type: actionTypeKeys.CLEAR_CART })
-	// }
+
 
 	useEffect(() => {
 		if (totalSum > 950) {
@@ -60,7 +58,7 @@ const Cart = () => {
 									<h1>{item.title}</h1>
 								</div>
 								<div className="cart__count">
-									<p>{item.price * item.quantity} рубль</p>
+									<p>{item.price * item.quantity} сом</p>
 									<div className="cart__btns">
 										<button
 											className="cart__btn"
@@ -113,7 +111,7 @@ const Cart = () => {
 
 					<div className="cart_cost">
 						<div className="discount">
-							<span>Стоимость</span> {subtotal} рубль
+							<span>Стоимость</span> {subtotal} сом
 						</div>
 						<div className="discount">
 							<span>Доставка</span>
@@ -122,12 +120,12 @@ const Cart = () => {
 						{discount > 0 && (
 							<div className="discount">
 								<p>Скидка:</p>
-								<p> -{discount.toFixed(0)} рубль</p>
+								<p> -{discount.toFixed(0)} сом</p>
 							</div>
 						)}
 						<div className="discount">
 							<span>Итого стоимость:</span>
-							<span> {totalSum.toFixed(0)} рубль</span>
+							<span> {totalSum.toFixed(0)} сом</span>
 						</div>
 					</div>
 				</div>

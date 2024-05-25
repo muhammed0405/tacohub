@@ -3,11 +3,17 @@
 import axios from "axios"
 import { FormEvent, useEffect, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
+import { GiTacos } from "react-icons/gi"
 import InputMask from "react-input-mask"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import OrderCart from "../../components/OrderCart/OrderCart"
+import { actionTypeKeys } from "../../Redux/actionTypes/actionTypes"
 import "./OrderPage.scss"
 
 export function OrderPage() {
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const [dateOptions, setDateOptions] = useState<
 		{ label: string; value: string }[]
 	>([])
@@ -39,11 +45,9 @@ export function OrderPage() {
 		e.preventDefault()
 		const form = e.currentTarget
 
-		// Create an instance of FormData from the form
 		const formData = new FormData(form)
 
 		try {
-			// Post the form data to the server
 			const response = await axios({
 				method: "post",
 				url: form.action,
@@ -52,24 +56,34 @@ export function OrderPage() {
 			})
 
 			console.log("Form submitted successfully:", response.data)
-			// Redirect or handle the successful submission
 		} catch (error) {
 			console.error("Error submitting form:", error)
-			// Handle the error, e.g., show an error message to the user
 		}
 	}
 
-	const notify = () => toast("Successfully submitted the form!")
-	// <p
-	// 	style={{
-	// 		display: "flex",
-	// 		alignItems: "center",
-	// 		gap: `10px`,
-	// 		fontSize: "16px",
-	// 	}}
-	// >
-	// 	<GiTacos /> ваш заказ принят!
-	// </p>
+	const handleClearCart = () => {
+		dispatch({ type: actionTypeKeys.CLEAR_CART })
+	}
+
+	const notify = () =>
+		toast(
+			<p
+				style={{
+					display: "flex",
+					alignItems: "center",
+					gap: `10px`,
+					fontSize: "25px",
+				}}
+			>
+				<GiTacos /> ваш заказ принят!
+			</p>
+		)
+
+	const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+		if (event.target.value === "") {
+			event.target.value = "+996"
+		}
+	}
 
 	return (
 		<div className="container">
@@ -81,13 +95,22 @@ export function OrderPage() {
 						action="https://sheetdb.io/api/v1/mhprlykneyavm"
 						method="post"
 						id="sheetdb-form"
-						onSubmit={handleSubmit}
+						onSubmit={e => {
+							handleSubmit(e)
+							handleClearCart()
+							notify()
+
+							setTimeout(() => {
+								navigate("/")
+							}, 2000)
+						}}
 					>
 						<InputMask
 							name="data[number]"
-							mask="'+7(999) 999-99-99"
+							mask="+996 (999) 99-99-99"
 							type="tel"
-							placeholder="'+7(999) 999-99-99"
+							placeholder="+996 (999) 99-99-99"
+							onFocus={handleFocus}
 							required
 						/>
 						<input
@@ -173,24 +196,27 @@ export function OrderPage() {
 							<option value="cash">Наличными</option>
 						</select>
 
-						<button onClick={notify} type="submit" className="submitbtn">
+						<button type="submit" className="submitbtn">
 							Отправить заказ
 						</button>
 					</form>
-
-					<Toaster
-						toastOptions={{
-							className: "",
-							style: {
-								background: "red",
-								padding: "16px",
-								marginTop: "30",
-							},
-							duration: 1000,
-						}}
-					/>
 				</div>
 			</div>
+
+			<Toaster
+				toastOptions={{
+					className: "",
+					style: {
+						background: "yellowgreen",
+						padding: "16px",
+						marginTop: "30",
+						height: "80px",
+						width: "400px",
+					},
+					duration: 1000,
+					id: "2",
+				}}
+			/>
 		</div>
 	)
 }

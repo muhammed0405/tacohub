@@ -103,7 +103,7 @@ const TacoGallery: React.FC = () => {
 
 												<div className="product__bottom">
 													<div className="product__price">
-														<p>{item.price} руб.</p>
+														<p>{item.price} сом</p>
 													</div>
 													<div className="product_change">
 														<button
@@ -148,7 +148,7 @@ const TacoGallery: React.FC = () => {
 			>
 				<FaShoppingCart /> В корзинy{" "}
 				{itemIdToModal && getQuantity(itemIdToModal!.id)}
-				{totalSum > 0 && <h5>{(totalSum - totalSum * 0.1).toFixed(0)} руб.</h5>}
+				{totalSum > 0 && <h5>{(totalSum - totalSum * 0.1).toFixed(0)} сом</h5>}
 			</div>
 			{showCard && <CardModal taco={itemIdToModal!} />}
 		</div>

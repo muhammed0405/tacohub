@@ -10,7 +10,7 @@ export default function Reviews() {
 
 				<div className="reviews__wrap">
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
@@ -20,7 +20,7 @@ export default function Reviews() {
 						</p>
 					</div>
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
@@ -30,7 +30,7 @@ export default function Reviews() {
 						</p>
 					</div>
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
@@ -40,7 +40,7 @@ export default function Reviews() {
 						</p>
 					</div>
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
@@ -50,7 +50,7 @@ export default function Reviews() {
 						</p>
 					</div>
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
@@ -60,7 +60,7 @@ export default function Reviews() {
 						</p>
 					</div>
 					<div className="reviews__content">
-						<h4>Victoria</h4>
+						<h4>Асан</h4>
 						<p>
 							Очень вкусно! Видна забота о клиенте, начинка сочная, много
 							овощей, все ровненькое, красивое, свежее. Я заказывала греческое
