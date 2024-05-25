@@ -95,7 +95,7 @@ const Header: React.FC = () => {
 								isShrunk ? "header__contact--shrunk" : "header__contact"
 							}
 						>
-							<h2>+79773230449</h2>
+							<h2>+996 772 308449</h2>
 						</div>
 						<div className="header__auth">
 							<div
